@@ -7,3 +7,12 @@ export interface IProject {
   link: string | null,
   technologies: string[]
 }
+
+export interface TimelineItem {
+  title: string;
+  subtitle: string;
+  period: string;
+  description: string;
+  type: "work" | "education" | "project";
+  current?: boolean;
+};
