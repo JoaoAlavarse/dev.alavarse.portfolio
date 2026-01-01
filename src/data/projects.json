@@ -1,0 +1,77 @@
+[
+  {
+    "id": "hemoup",
+    "name": "HemoUp",
+    "whatIs": "Aplicação para o incentivo a doação de sangue",
+    "smallDescription": "O HemoUp é uma plataforma que deixa o processo de doação de sangue mais fácil, divertido e organizado!",
+    "technologies": [
+      "Typescript",
+      "React Native",
+      "NextJS",
+      "Java",
+      "Spring Boot",
+      "TailwindCSS"
+    ],
+    "link": "https://www.hemoup.com.br/",
+    "logo": "/assets/hemoup-logo.png"
+  },
+  {
+    "id": "zshop",
+    "name": "Zshop - Chat de Vendas",
+    "whatIs": "E-commerce e catálogo digital integrado com WhatsApp",
+    "smallDescription": "O Zshop é o catálogo virtual perfeito para quem quer gerenciar vendas com praticidade e atender clientes com agilidade.",
+    "technologies": [
+      "Typescript",
+      "React",
+      "NextJS",
+      "NestJS",
+      "Fastify",
+      "TailwindCSS"
+    ],
+    "link": "https://www.zshop.plus/",
+    "logo": "/assets/zshop-logo.webp"
+  },
+  {
+    "id": "pupilens",
+    "name": "Pupilens",
+    "whatIs": "Demonstrativo de lentes para óticas",
+    "smallDescription": "Já pensou em como modernizar sua ótica e demonstrar os diferentes tipos de distorções, tratamentos, refrações e cores das lentes na hora da venda? O Pupilens é para você.",
+    "technologies": [
+      "Typescript",
+      "React Native",
+      "C#",
+      ".NET"
+    ],
+    "link": "https://www.pupilens.com.br/",
+    "logo": "/assets/pupilens-logo.webp"
+  },
+  {
+    "id": "kerootica",
+    "name": "Kero Ótica",
+    "whatIs": "ERP completo para óticas",
+    "smallDescription": "Seguro e simples para controlar vendas, emitir notas fiscais, gerenciar estoque e muito mais. Conheça o sistema que agiliza as atividades da ótica e aumenta os resultados.",
+    "technologies": [
+      "Typescript",
+      "VueJS",
+      "C#",
+      ".NET"
+    ],
+    "link": "https://kerootica.com.br/",
+    "logo": "/assets/kerootica-logo.webp"
+  },
+  {
+    "id": "batterycommerce",
+    "name": "BatteryCommerce",
+    "whatIs": "E-commerce integrado com métodos de pagamento e frete",
+    "smallDescription": "Este foi meu primeiro projeto de grande porte, sendo ele o projeto desenvolvido para o TCC da minha graduação.",
+    "technologies": [
+      "Typescript",
+      "React",
+      "Bootstrap",
+      "Java",
+      "Spring Boot"
+    ],
+    "link": null,
+    "logo": "/assets/batterycommerce-logo.png"
+  }
+]

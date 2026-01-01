@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[85vh] items-center">
+    <section className="relative flex min-h-[85vh] items-center" id="sobre">
       <div className="grid w-full gap-12 md:grid-cols-2 items-center">
         {/* TEXTO */}
         <div>
@@ -24,13 +24,13 @@ export function Hero() {
 
           <div className="mt-8 flex flex-wrap gap-4">
             <Button asChild size="lg">
-              <Link href="/projetos">
+              <Link href="/sobre">
                 Me conheça <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
 
             <Button asChild size="lg" variant="outline">
-              <Link href="/contato">Entrar em contato</Link>
+              <Link href="#contato">Entrar em contato</Link>
             </Button>
           </div>
         </div>

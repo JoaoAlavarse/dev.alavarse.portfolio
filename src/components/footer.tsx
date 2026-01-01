@@ -26,7 +26,7 @@ export function Footer() {
           <Link href="https://www.linkedin.com/in/joao-alavarse/" target="_blank">
             <Linkedin className="w-6 h-6 text-white hover:drop-shadow-[0_0_10px_rgba(0,128,255,0.8)] transition-all duration-300" />
           </Link>
-          <Link href="mailto:alavarse@alavarsedev.com.br">
+          <Link href="mailto:contato@alavarsedev.com.br">
             <Mail className="w-6 h-6 text-white hover:drop-shadow-[0_0_10px_rgba(255,0,128,0.8)] transition-all duration-300" />
           </Link>
         </div>
