@@ -3,6 +3,7 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Footer } from "@/components/footer";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: {
@@ -71,6 +72,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning  className="scroll-smooth">
       <body className="min-h-screen bg-background text-foreground antialiased">
+        <Analytics/>
         <ThemeProvider>
           <Navbar />
           {children}
