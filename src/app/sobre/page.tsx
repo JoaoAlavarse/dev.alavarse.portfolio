@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { Check } from "lucide-react";
 import Contact from "@/components/home/contact";
-import { Timeline } from "@/components/timeline";
+
 import professionalExperience from "@/data/professional-experience.json";
 import academicExperience from "@/data/academic-experience.json";
 import { TimelineItem } from "@/interfaces";
 import { Metadata } from "next";
+import ClientTimeline from "@/components/client-timeline";
 
 export const metadata: Metadata = {
   title: "Sobre mim | João Alavarse",
@@ -137,14 +138,14 @@ export default function AboutPage() {
       <section>
         <h2 className="text-3xl font-bold">Experiência profissional</h2>
 
-        <Timeline items={professionalExperience as TimelineItem[]} />
+        <ClientTimeline items={professionalExperience as TimelineItem[]} />
       </section>
 
       {/* FORMAÇÃO */}
       <section>
         <h2 className="text-3xl font-bold">Formação acadêmica</h2>
 
-        <Timeline items={academicExperience as TimelineItem[]} />
+        <ClientTimeline items={academicExperience as TimelineItem[]} />
       </section>
 
       {/* TECNOLOGIAS */}
