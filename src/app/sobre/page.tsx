@@ -55,6 +55,25 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="container mx-auto px-6 py-24 space-y-32">
+
+        {/* FOTO */}
+        <div className="relative flex md:hidden justify-center">
+          {/* Glow */}
+          <div className="absolute -inset-4 rounded-full bg-linear-to-tr from-purple-500/30 via-blue-500/20 to-pink-500/30 blur-3xl" />
+
+          {/* Glass frame */}
+          <div className="relative rounded-2xl bg-background/60 backdrop-blur-lg border border-white/10 p-2 shadow-xl">
+            <Image
+              src="/joao-alavarse.jpg"
+              alt="João Alavarse, desenvolvedor fullstack"
+              width={360}
+              height={450}
+              className="rounded-xl object-cover grayscale hover:grayscale-0 transition duration-300"
+              priority
+            />
+          </div>
+        </div>
+
       {/* HERO */}
       <section className="flex justify-between items-center">
         <div className="max-w-3xl">
@@ -77,7 +96,7 @@ export default function AboutPage() {
         </div>
 
         {/* FOTO */}
-        <div className="relative flex justify-center">
+        <div className="relative hidden md:flex justify-center">
           {/* Glow */}
           <div className="absolute -inset-4 rounded-full bg-linear-to-tr from-purple-500/30 via-blue-500/20 to-pink-500/30 blur-3xl" />
 

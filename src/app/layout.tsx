@@ -70,8 +70,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning  className="scroll-smooth">
-      <body className="min-h-screen bg-background text-foreground antialiased">
+    <html lang="pt-BR" suppressHydrationWarning  className="scroll-smooth overflow-x-hidden">
+      <body className="min-h-screen bg-background text-foreground antialiased overflow-x-hidden">
         <Analytics/>
         <ThemeProvider>
           <Navbar />

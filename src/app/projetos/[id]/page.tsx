@@ -42,6 +42,21 @@ export default async function ProjectDetailsPage({
         <div className="absolute bottom-1/4 right-1/4 h-96 w-96 bg-blue-500/20 blur-3xl" />
       </div>
 
+        <div className="relative items-center flex md:hidden">
+          {/* glow da logo */}
+          <div className="pointer-events-none absolute -inset-8 rounded-3xl bg-linear-to-br from-purple-500/30 to-blue-500/20 blur-3xl" />
+
+          <div className="relative flex p-4 items-center justify-center rounded-3xl border border-white/20 bg-zinc-900/70 backdrop-blur-xl shadow-[0_30px_80px_-20px_rgba(59,130,246,0.65)]">
+            <Image
+              src={project.logo}
+              alt={`${project.name} logo`}
+              width={400}
+              height={400}
+              className="object-contain"
+            />
+          </div>
+        </div>
+
       {/* HEADER */}
       <div className="flex justify-between">
         <section className="relative max-w-3xl rounded-3xl border border-white/15 bg-zinc-900/70 backdrop-blur-xl p-12 shadow-[0_0_80px_-20px_rgba(168,85,247,0.45)]">
@@ -76,7 +91,7 @@ export default async function ProjectDetailsPage({
             )}
           </div>
         </section>
-        <div className="relative flex items-center">
+        <div className="relative items-center hidden md:flex">
           {/* glow da logo */}
           <div className="pointer-events-none absolute -inset-8 rounded-3xl bg-linear-to-br from-purple-500/30 to-blue-500/20 blur-3xl" />
 
@@ -111,6 +126,24 @@ export default async function ProjectDetailsPage({
           ))}
         </section>
       )}
+
+          <aside className="rounded-2xl border border-white/10 bg-background/60 backdrop-blur-xl p-6 shadow-lg h-fit md:hidden block">
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+              Tecnologias
+            </h3>
+
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {project.technologies.map((tech: string) => (
+                <li
+                  key={tech}
+                  className="rounded-full px-4 py-1 border border-white/10 bg-linear-to-r from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20 transition"
+                >
+                  {tech}
+                </li>
+              ))}
+            </ul>
+          </aside>
+
       {/* ATUAÇÃO */}
       {project.role && (
         <section className="grid grid-cols-3 gap-16">
@@ -142,7 +175,7 @@ export default async function ProjectDetailsPage({
           </div>
 
           {/* TECNOLOGIAS */}
-          <aside className="rounded-2xl border border-white/10 bg-background/60 backdrop-blur-xl p-6 shadow-lg h-fit">
+          <aside className="rounded-2xl border border-white/10 bg-background/60 backdrop-blur-xl p-6 shadow-lg h-fit md:block hidden">
             <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
               Tecnologias
             </h3>
