@@ -13,7 +13,19 @@
       "TailwindCSS"
     ],
     "link": "https://www.hemoup.com.br/",
-    "logo": "/assets/hemoup-logo.png"
+    "logo": "/assets/hemoup-logo.png",
+    "role": "Fundador e Desenvolvedor Full Stack",
+    "responsibilities": [
+      "Fundador",
+      "Desenvolvimento Mobile",
+      "Desenvolvimento Back End",
+      "Analise de Requisitos",
+      "Marketing",
+      "Analise de Mercado",
+      "Projeção de projeto",
+      "Projeção de custos e faturamentos"
+    ],
+    "description": "O HemoUp surgiu após uma experiência própria onde fui realizar uma doação de sangue e percebi as dificuldades do processo. \n\n Após isso, com diversas conversas com a equipe do Hemocentro da minha cidade, foi decidido como seria feita a aplicação para resolver essas situações, em conjunto, a prefeitura da cidade estava lançando projetos de Pré-Incubação / Incubação para fomentar a inovação na criação de startups na cidade, e o HemoUp foi selecionado em 1° lugar no edital! \n\n Foram propostas diversas mentorias sobre marketing, gestão, captação de recursos, jurídico e etc. Com isso, o projeto possui uma base muito sólida e terá seu desenvolvimento iniciado no ano de 2026!"
   },
   {
     "id": "zshop",
@@ -29,7 +41,16 @@
       "TailwindCSS"
     ],
     "link": "https://www.zshop.plus/",
-    "logo": "/assets/zshop-logo.webp"
+    "logo": "/assets/zshop-logo.webp",
+    "role": "Desenvolvedor Full Stack",
+    "responsibilities": [
+      "Desenvolvimento Full Stack",
+      "Desenvolvimento Mobile",
+      "Orquestração Docker",
+      "Analise de Requisitos",
+      "CI/CD"
+    ],
+    "description": "Zshop é uma plataforma digital para gerar vendas integradas com o WhatsApp. Atuei em todos os 6 repositórios que o projeto possuía, sendo eles: API, Front Administrativo, Front Catálogo, APP Mobile, Integração com WhatsAPP e um Orquestrador que subia instâncias Docker para essas integrações \n\n "
   },
   {
     "id": "pupilens",
@@ -43,7 +64,13 @@
       ".NET"
     ],
     "link": "https://www.pupilens.com.br/",
-    "logo": "/assets/pupilens-logo.webp"
+    "logo": "/assets/pupilens-logo.webp",
+    "role": " Desenvolvedor Mobile",
+    "responsibilities": [
+      "Desenvolvimento Mobile",
+      "Suporte"
+    ],
+    "description": "Atuo como desenvolvedor Mobile para este projeto, com grandes manipulações de dados e SVGs, o que requer um certo conhecimento sobre performance Mobile"
   },
   {
     "id": "kerootica",
@@ -57,7 +84,12 @@
       ".NET"
     ],
     "link": "https://kerootica.com.br/",
-    "logo": "/assets/kerootica-logo.webp"
+    "logo": "/assets/kerootica-logo.webp",
+    "role": "Fundador e Desenvolvedor Full Stack",
+    "responsibilities": [
+      "Desenvolvimento Full Stack"
+    ],
+    "description": "Comecei recentemente a atuar no Kero Ótica, um ERP especializado para óticas. Por enquanto, participo do desenvolvimento de funcionalidades que tem por objetivo a melhoria na qualidade de vida do usuário, tais como: facilidades de navegação pelo sistema, exibição de dados e relatórios."
   },
   {
     "id": "batterycommerce",
@@ -72,6 +104,13 @@
       "Spring Boot"
     ],
     "link": null,
-    "logo": "/assets/batterycommerce-logo.png"
+    "logo": "/assets/batterycommerce-logo.png",
+    "role": "Fundador e Desenvolvedor Full Stack",
+    "responsibilities": [
+      "Fundador",
+      "Desenvolvimento Full Stack",
+      "Analise de Requisitos"
+    ],
+    "description": "Podemos dizer que foi meu primeiro grande projeto! Aqui foi onde minha paizão pelo desenvolvimento realmente se aprofundou! \n\n Em 6 meses, aprendi sobre desenvolvimento de APIs em Java com Spring Boot, fiz regras de negócio complexas, como vendas, entregas, pagamentos, calculo de peso e dimensão de produtos para frete. Integrei com APIs para o calculo de frete e também para a geração de pagamentos com Boleto, Pix e Cartão de Crédito. Também, não posso deixar de lado a parte de documentação, criei diversos diagramas, dicionário de dados, detalhamento de requisitos e etc. \n\n Enfim, tudo o que se espera de um bom e completo software \n\n Tenho orgulho em dizer que obtive nota máxima pela implementação desse projeto"
   }
 ]

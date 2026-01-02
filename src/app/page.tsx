@@ -1,8 +1,6 @@
 import Contact from "@/components/home/contact";
 import { Hero } from "@/components/home/hero";
 import ProjectsList from "@/components/home/projects";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 export default function Home() {
   return (

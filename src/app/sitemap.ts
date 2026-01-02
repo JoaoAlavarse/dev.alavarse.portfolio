@@ -1,43 +1,50 @@
 import { MetadataRoute } from "next";
+import projects from "@/data/projects.json";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  return [
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
+      url: BASE_URL,
       priority: 1,
-      lastModified: "2025-12-31",
+      lastModified: new Date(),
       alternates: {
         languages: {
-          "pt-BR": process.env.NEXT_PUBLIC_BASE_URL,
+          "pt-BR": BASE_URL,
         },
-      }
+      },
     },
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/projetos`,
-      lastModified: "2025-12-31",
+      url: `${BASE_URL}/projetos`,
+      lastModified: new Date(),
       alternates: {
         languages: {
-          "pt-BR": `${process.env.NEXT_PUBLIC_BASE_URL}/projetos`,
+          "pt-BR": `${BASE_URL}/projetos`,
         },
-      }
+      },
     },
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/sobre`,
-      lastModified: "2025-12-31",
+      url: `${BASE_URL}/sobre`,
+      lastModified: new Date(),
       alternates: {
         languages: {
-          "pt-BR": `${process.env.NEXT_PUBLIC_BASE_URL}/sobre`,
+          "pt-BR": `${BASE_URL}/sobre`,
         },
-      }
+      },
     },
-    {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/contato`,
-      lastModified: "2025-12-31",
-      alternates: {
-        languages: {
-          "pt-BR": `${process.env.NEXT_PUBLIC_BASE_URL}/contato`,
-        },
-      }
+  ];
+
+  const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
+    url: `${BASE_URL}/projetos/${project.id}`,
+    lastModified: new Date(),
+    priority: 0.8,
+    alternates: {
+      languages: {
+        "pt-BR": `${BASE_URL}/projetos/${project.id}`,
+      },
     },
-  ]
+  }));
+
+  return [...staticRoutes, ...projectRoutes];
 }

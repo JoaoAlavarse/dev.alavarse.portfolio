@@ -1,12 +1,55 @@
-"use client";
-
 import Image from "next/image";
 import { Check } from "lucide-react";
 import Contact from "@/components/home/contact";
 import { Timeline } from "@/components/timeline";
-import professionalExperience from "@/data/professional-experience.json"
-import academicExperience from "@/data/academic-experience.json"
+import professionalExperience from "@/data/professional-experience.json";
+import academicExperience from "@/data/academic-experience.json";
 import { TimelineItem } from "@/interfaces";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sobre mim | João Alavarse",
+  description:
+    "Conheça João Alavarse, desenvolvedor fullstack com experiência em React, Next.js, Node.js, Java, arquitetura de software e produtos digitais.",
+  keywords: [
+    "João Alavarse",
+    "desenvolvedor fullstack",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Java",
+    "Spring Boot",
+    "React Native",
+    "portfólio desenvolvedor",
+  ],
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/sobre`,
+  },
+  openGraph: {
+    title: "Sobre mim | João Alavarse",
+    description:
+      "Desenvolvedor fullstack focado em produtos reais, arquitetura de software e experiência do usuário.",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/sobre`,
+    siteName: "João Alavarse",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/joao-alavarse.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "João Alavarse – Desenvolvedor Fullstack",
+      },
+    ],
+    locale: "pt_BR",
+    type: "profile",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sobre mim | João Alavarse",
+    description:
+      "Desenvolvedor fullstack com foco em arquitetura, produtos digitais e experiência real de mercado.",
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL}/joao-alavarse.jpg`],
+  },
+};
 
 export default function AboutPage() {
   return (
@@ -41,7 +84,7 @@ export default function AboutPage() {
           <div className="relative rounded-2xl bg-background/60 backdrop-blur-lg border border-white/10 p-2 shadow-xl">
             <Image
               src="/joao-alavarse.jpg"
-              alt="Foto de João Alavarse"
+              alt="João Alavarse, desenvolvedor fullstack"
               width={360}
               height={450}
               className="rounded-xl object-cover grayscale hover:grayscale-0 transition duration-300"
@@ -65,7 +108,8 @@ export default function AboutPage() {
           <p className="mt-4 text-muted-foreground leading-relaxed">
             E também através da influência de ótimos professores que tive, me
             despertou a vontade de contribuir com a próxima geração de
-            desenvolvedores. Assim, também comecei a atuar como professor do ensino supeior.
+            desenvolvedores. Assim, também comecei a atuar como professor do
+            ensino supeior.
           </p>
 
           <p className="mt-4 text-muted-foreground leading-relaxed">
@@ -93,18 +137,14 @@ export default function AboutPage() {
       <section>
         <h2 className="text-3xl font-bold">Experiência profissional</h2>
 
-        <Timeline
-          items={professionalExperience as TimelineItem[]}
-        />
+        <Timeline items={professionalExperience as TimelineItem[]} />
       </section>
 
       {/* FORMAÇÃO */}
       <section>
         <h2 className="text-3xl font-bold">Formação acadêmica</h2>
 
-        <Timeline
-          items={academicExperience as TimelineItem[]}
-        />
+        <Timeline items={academicExperience as TimelineItem[]} />
       </section>
 
       {/* TECNOLOGIAS */}

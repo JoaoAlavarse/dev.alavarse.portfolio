@@ -6,6 +6,10 @@ export interface IProject {
   logo: string,
   link: string | null,
   technologies: string[]
+  description?: string;
+  role?: string;
+  responsibilities?: string[];
+  images?: string[];
 }
 
 export interface TimelineItem {
