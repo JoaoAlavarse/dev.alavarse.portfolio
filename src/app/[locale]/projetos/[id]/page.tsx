@@ -8,7 +8,7 @@ import Link from "next/link";
 import Contact from "@/components/home/contact";
 import { getDictionary } from "@/lib/get-dictionary";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   const locales = ["pt", "en", "es"];
 
   return projectsPt.flatMap((project) =>

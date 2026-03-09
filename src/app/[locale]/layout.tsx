@@ -8,8 +8,10 @@ import { getDictionary } from "@/lib/get-dictionary";
 
 type Locale = "pt" | "en" | "es";
 
-type Props = {
-  params: Promise<{ locale: Locale }>;
+// O Next.js exige que params aceite string genérica para validar o roteamento
+type LayoutProps = {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 };
 
 export const viewport: Viewport = {
@@ -17,7 +19,14 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const currentLocale = locale as Locale;
+
   const seo = {
     pt: {
       title: "AlavarseDev | Desenvolvedor Full Stack",
@@ -77,26 +86,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ],
     },
   };
-  const { locale } = await params;
 
-  const data = seo[locale];
+  // Fallback para 'en' caso a locale venha inesperada
+  const data = seo[currentLocale] || seo.en;
 
   return {
     title: data.title,
     description: data.description,
-
     metadataBase: new URL("https://alavarsedev.com.br"),
-
     alternates: {
       canonical: `/${locale}`,
-      languages: {
-        pt: "/pt",
-        en: "/en",
-        es: "/es",
-        "x-default": "/en",
-      },
+      languages: { pt: "/pt", en: "/en", es: "/es", "x-default": "/en" },
     },
-
     openGraph: {
       title: data.title,
       description: data.description,
@@ -150,22 +151,19 @@ export function generateStaticParams() {
   return [{ locale: "pt" }, { locale: "en" }, { locale: "es" }];
 }
 
-export default async function RootLayout({
-  children,
-  params,
-}: Readonly<{
-  children: React.ReactNode;
-  params: Promise<{ locale: "pt" | "en" | "es" }>;
-}>) {
+export default async function RootLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
-  const dict: any = getDictionary(locale);
+
+  // Forçamos o tipo aqui para o restante do código funcionar com seu tipo Locale
+  const currentLocale = locale as Locale;
+  const dict: any = getDictionary(currentLocale);
 
   return (
     <html
       lang={
-        locale === "pt"
+        currentLocale === "pt"
           ? "pt-BR"
-          : locale === "es"
+          : currentLocale === "es"
             ? "es-ES"
             : "en-US"
       }
@@ -215,7 +213,7 @@ export default async function RootLayout({
         />
         <Analytics />
         <ThemeProvider>
-          <Navbar locale={locale} />
+          <Navbar locale={currentLocale} />
           {children}
           <Footer />
         </ThemeProvider>
