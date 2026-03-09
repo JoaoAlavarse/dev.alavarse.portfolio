@@ -11,7 +11,7 @@ export function Footer() {
             João Alavarse
           </h2>
           <p className="text-sm text-muted-foreground mt-1">
-            Desenvolvedor Full Stack
+            Full Stack Engineer
           </p>
         </div>
 
@@ -36,7 +36,7 @@ export function Footer() {
       <div className="mt-10 text-center text-sm text-muted-foreground relative">
         <span className="absolute left-1/2 -translate-x-1/2 top-1/2 h-px w-32 bg-linear-to-r from-purple-400 via-blue-400 to-pink-400 opacity-30"></span>
         <span className="relative z-10 bg-background/70 px-2">
-          © {new Date().getFullYear()} João Alavarse. Todos os direitos reservados.
+          © {new Date().getFullYear()} João Alavarse. All rights reserved.
         </span>
       </div>
     </footer>

@@ -1,50 +1,57 @@
-import { MetadataRoute } from "next";
-import projects from "@/data/projects.json";
+import { MetadataRoute } from "next"
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
+import projectsPt from "@/data/projects-pt.json"
+import projectsEn from "@/data/projects-en.json"
+import projectsEs from "@/data/projects-es.json"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes: MetadataRoute.Sitemap = [
-    {
-      url: BASE_URL,
-      priority: 1,
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          "pt-BR": BASE_URL,
-        },
-      },
-    },
-    {
-      url: `${BASE_URL}/projetos`,
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          "pt-BR": `${BASE_URL}/projetos`,
-        },
-      },
-    },
-    {
-      url: `${BASE_URL}/sobre`,
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          "pt-BR": `${BASE_URL}/sobre`,
-        },
-      },
-    },
-  ];
+  const base = "https://alavarsedev.com.br"
 
-  const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
-    url: `${BASE_URL}/projetos/${project.id}`,
-    lastModified: new Date(),
-    priority: 0.8,
-    alternates: {
-      languages: {
-        "pt-BR": `${BASE_URL}/projetos/${project.id}`,
-      },
-    },
-  }));
+  const locales = ["pt", "en", "es"]
 
-  return [...staticRoutes, ...projectRoutes];
+  const routes = ["", "/sobre", "/projetos"]
+
+  const projectsByLocale = {
+    pt: projectsPt,
+    en: projectsEn,
+    es: projectsEs,
+  }
+
+  const urls: MetadataRoute.Sitemap = []
+
+  for (const locale of locales) {
+    const projects = projectsByLocale[locale as keyof typeof projectsByLocale]
+
+    // páginas principais
+    for (const route of routes) {
+      urls.push({
+        url: `${base}/${locale}${route}`,
+        lastModified: new Date(),
+        alternates: {
+          languages: {
+            pt: `${base}/pt${route}`,
+            en: `${base}/en${route}`,
+            es: `${base}/es${route}`,
+          },
+        },
+      })
+    }
+
+    // páginas de projetos
+    for (const project of projects) {
+      urls.push({
+        url: `${base}/${locale}/projetos/${project.id}`,
+        lastModified: new Date(),
+        alternates: {
+          languages: {
+            pt: `${base}/pt/projetos/${project.id}`,
+            en: `${base}/en/projetos/${project.id}`,
+            es: `${base}/es/projetos/${project.id}`,
+          },
+        },
+      })
+    }
+  }
+
+  return urls
 }

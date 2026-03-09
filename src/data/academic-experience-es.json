@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Especialización en Seguridad de la Información - UNIASSELVI",
+    "subtitle": "Educación Superior - Especialización",
+    "period": "2024 - 2025",
+    "type": "education",
+    "description": "Base sólida sobre compliance y seguridad dentro de las empresas."
+  },
+  {
+    "title": "Monitor y Representante Estudiantil del Curso - Facultad UMFG",
+    "subtitle": "Monitoría Académica",
+    "period": "2022 - 2024",
+    "type": "education",
+    "description": "Monitorías para otros estudiantes del curso de Análisis y Desarrollo de Sistemas. Materias: Lógica y Fundamentos de Programación, Estructuras de Datos, Programación I, Bases de Datos y Programación II."
+  },
+  {
+    "title": "Tecnólogo en Análisis y Desarrollo de Sistemas - Facultad UMFG",
+    "subtitle": "Educación Superior",
+    "period": "2022 - 2024",
+    "type": "education",
+    "description": "Base sólida en lógica, algoritmos, estructuras de datos e ingeniería de software."
+  }
+]

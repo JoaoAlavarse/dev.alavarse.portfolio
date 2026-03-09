@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Postgraduate Specialization in Information Security - UNIASSELVI",
+    "subtitle": "Higher Education - Specialization",
+    "period": "2024 - 2025",
+    "type": "education",
+    "description": "Strong foundation in compliance and security within companies."
+  },
+  {
+    "title": "Teaching Assistant and Student Representative - UMFG College",
+    "subtitle": "Academic Mentoring",
+    "period": "2022 - 2024",
+    "type": "education",
+    "description": "Mentoring other students in the Systems Analysis and Development program. Subjects: Programming Logic and Fundamentals, Data Structures, Programming I, Databases, and Programming II."
+  },
+  {
+    "title": "Technologist Degree in Systems Analysis and Development - UMFG College",
+    "subtitle": "Higher Education",
+    "period": "2022 - 2024",
+    "type": "education",
+    "description": "Strong foundation in logic, algorithms, data structures, and software engineering."
+  }
+]

@@ -1,37 +1,69 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import projects from "@/data/projects.json";
-import { Button } from "@/components/ui/button";
+import projectsEn from "@/data/projects-en.json";
+import projectsEs from "@/data/projects-es.json";
+import projectsPt from "@/data/projects-pt.json";import { Button } from "@/components/ui/button";
 import { IProject } from "@/interfaces";
 import Link from "next/link";
 import Contact from "@/components/home/contact";
+import { getDictionary } from "@/lib/get-dictionary";
 
-/* 🔥 SSG */
-export async function generateStaticParams() {
-  return projects.map((project) => ({
-    id: project.id,
-  }));
+export function generateStaticParams() {
+  const locales = ["pt", "en", "es"];
+
+  return projectsPt.flatMap((project) =>
+    locales.map((locale) => ({
+      locale,
+      id: project.id,
+    })),
+  );
 }
 
-/* 🔥 SEO */
-export function generateMetadata({ params }: { params: { id: string } }) {
+export function generateMetadata({
+  params,
+}: {
+  params: { id: string; locale: string };
+}) {
+  const projects = params.locale === "en" ? projectsEn : params.locale === "es" ? projectsEs : projectsPt;
   const project = projects.find((p) => p.id === params.id);
 
   if (!project) return {};
 
   return {
-    title: `${project.name} | Projetos`,
+    title: `${project.name} | João Alavarse`,
     description: project.description,
+
+    alternates: {
+      canonical: `/${params.locale}/projetos/${params.id}`,
+    },
+
+    openGraph: {
+      title: project.name,
+      description: project.description,
+      url: `/${params.locale}/projetos/${params.id}`,
+      siteName: "João Alavarse",
+      type: "article",
+      images: [
+        {
+          url: project?.logo || "/og-default.png",
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
   };
 }
 
 export default async function ProjectDetailsPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string; locale: "pt" | "en" | "es" }>;
 }) {
-  const { id } = await params;
+  const { id, locale } = await params;
+  const projects = locale === "en" ? projectsEn : locale === "es" ? projectsEs : projectsPt;
+
   const project = projects.find((p) => p.id === id) as IProject | undefined;
+  const dict: any = getDictionary(locale);
 
   if (!project) return notFound();
 
@@ -42,20 +74,20 @@ export default async function ProjectDetailsPage({
         <div className="absolute bottom-1/4 right-1/4 h-96 w-96 bg-blue-500/20 blur-3xl" />
       </div>
 
-        <div className="relative items-center flex md:hidden">
-          {/* glow da logo */}
-          <div className="pointer-events-none absolute -inset-8 rounded-3xl bg-linear-to-br from-purple-500/30 to-blue-500/20 blur-3xl" />
+      <div className="relative items-center flex md:hidden">
+        {/* glow da logo */}
+        <div className="pointer-events-none absolute -inset-8 rounded-3xl bg-linear-to-br from-purple-500/30 to-blue-500/20 blur-3xl" />
 
-          <div className="relative flex p-4 items-center justify-center rounded-3xl border border-white/20 bg-zinc-900/70 backdrop-blur-xl shadow-[0_30px_80px_-20px_rgba(59,130,246,0.65)]">
-            <Image
-              src={project.logo}
-              alt={`${project.name} logo`}
-              width={400}
-              height={400}
-              className="object-contain"
-            />
-          </div>
+        <div className="relative flex p-4 items-center justify-center rounded-3xl border border-white/20 bg-zinc-900/70 backdrop-blur-xl shadow-[0_30px_80px_-20px_rgba(59,130,246,0.65)]">
+          <Image
+            src={project.logo}
+            alt={`${project.name} logo`}
+            width={400}
+            height={400}
+            className="object-contain"
+          />
         </div>
+      </div>
 
       {/* HEADER */}
       <div className="flex justify-between">
@@ -84,7 +116,7 @@ export default async function ProjectDetailsPage({
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Visitar projeto
+                    {dict.project.visit}
                   </Link>
                 </Button>
               </div>
@@ -127,28 +159,28 @@ export default async function ProjectDetailsPage({
         </section>
       )}
 
-          <aside className="rounded-2xl border border-white/10 bg-background/60 backdrop-blur-xl p-6 shadow-lg h-fit md:hidden block">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-              Tecnologias
-            </h3>
+      <aside className="rounded-2xl border border-white/10 bg-background/60 backdrop-blur-xl p-6 shadow-lg h-fit md:hidden block">
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+          Tecnologias
+        </h3>
 
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {project.technologies.map((tech: string) => (
-                <li
-                  key={tech}
-                  className="rounded-full px-4 py-1 border border-white/10 bg-linear-to-r from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20 transition"
-                >
-                  {tech}
-                </li>
-              ))}
-            </ul>
-          </aside>
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {project.technologies.map((tech: string) => (
+            <li
+              key={tech}
+              className="rounded-full px-4 py-1 border border-white/10 bg-linear-to-r from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20 transition"
+            >
+              {tech}
+            </li>
+          ))}
+        </ul>
+      </aside>
 
       {/* ATUAÇÃO */}
       {project.role && (
         <section className="grid grid-cols-3 gap-16">
           <div className="col-span-2">
-            <h2 className="text-3xl font-bold">Minha atuação</h2>
+            <h2 className="text-3xl font-bold">{dict.project.myActions}</h2>
 
             <p className="mt-6 text-muted-foreground leading-relaxed text-lg">
               {project.role}
@@ -157,7 +189,7 @@ export default async function ProjectDetailsPage({
             {project.responsibilities && (
               <div className="mt-8">
                 <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                  Principais responsabilidades
+                  {dict.project.myResponsibilities}
                 </h3>
 
                 <ul className="flex flex-wrap gap-3">
@@ -194,8 +226,23 @@ export default async function ProjectDetailsPage({
         </section>
       )}
 
-      <Contact/>
-
+      <Contact params={params}/>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareSourceCode",
+            name: project.name,
+            description: project.description,
+            programmingLanguage: project.technologies,
+            author: {
+              "@type": "Person",
+              name: "João Alavarse",
+            },
+          }),
+        }}
+      />
     </main>
   );
 }

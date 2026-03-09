@@ -1,0 +1,88 @@
+{
+  "navbar": {
+    "home": "Início",
+    "projects": "Projetos",
+    "about": "Sobre",
+    "contact": "Contato",
+    "openMenu": "Abrir menu de navegação"
+  },
+  "projects": {
+    "title": "Projetos",
+    "description": "Alguns dos projetos que desenvolvi ao longo da minha trajetória profissional.",
+    "viewAll": "Veja todos os projetos"
+  },
+  "project": {
+    "visit": "Visitar projeto",
+    "myActions": "Minha atuação",
+    "myResponsibilities": "Principais responsabilidades"
+  },
+  "about": {
+    "title": "Sobre mim",
+    "hero": {
+      "paragraph1": "Sou desenvolvedor fullstack, apaixonado por tecnologia, arquitetura de software e por transformar ideias em produtos reais, escaláveis e bem construídos.",
+      "paragraph2": "Ao desenvolver um software, sempre penso no cliente e no que poderia ajudar ele, as vezes pode ser algo simples, ou até mesmo \"chato\" de se programar, mas são esses pequenos detalhes que facilitam a vida do usuário e que mantém o cliente com o produto"
+    },
+    "story": {
+      "title": "Minha história",
+      "paragraph1": "Minha jornada na tecnologia começou ainda na graduação, quando percebi que programação era muito mais do que escrever código, era resolver problemas reais.",
+      "paragraph2": "E também através da influência de ótimos professores que tive, me despertou a vontade de contribuir com a próxima geração de desenvolvedores. Assim, também comecei a atuar como professor do ensino superior.",
+      "paragraph3": "Hoje, trabalho com produtos digitais completos, cuidando de frontend, backend e decisões de arquitetura."
+    },
+    "values": [
+      "Arquitetura e boas práticas",
+      "Experiência com produtos reais",
+      "Mentalidade de produto",
+      "Comunicação clara"
+    ],
+    "professionalExperience": {
+      "title": "Experiência profissional"
+    },
+    "academicExperience": {
+      "title": "Formação acadêmica"
+    },
+    "technologies": {
+      "title": "Tecnologias",
+      "list": [
+        "TypeScript",
+        "React",
+        "Next.js",
+        "React Native",
+        "Node.js",
+        "NestJS",
+        "Java",
+        "Spring Boot",
+        ".NET",
+        "TailwindCSS",
+        "PostgreSQL",
+        "Docker"
+      ]
+    }
+  },
+  "contact": {
+    "title": "Vamos conversar?",
+    "description": "Se você tem uma ideia ou precisa de alguém para tirar seu projeto do papel, posso te ajudar do planejamento ao deploy.",
+    "benefits": [
+      "Arquitetura e boas práticas",
+      "Frontend e backend completos",
+      "APIs performáticas e seguras",
+      "Comunicação clara e rápida"
+    ],
+    "actions": {
+      "email": "Enviar e-mail",
+      "whatsapp": "WhatsApp",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "responseTime": "Respondo normalmente em até 24 horas."
+  },
+  "hero": {
+    "greeting": "Olá, eu sou",
+    "name": "João Alavarse",
+    "description": "Desenvolvedor Full Stack com foco em aplicações modernas, performáticas e bem arquitetadas usando React, React Native e Java com Spring Boot.",
+    "actions": {
+      "about": "Me conheça",
+      "contact": "Entrar em contato"
+    },
+    "imageAlt": "Foto de João Alavarse"
+  }
+}

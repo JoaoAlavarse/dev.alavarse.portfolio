@@ -1,0 +1,116 @@
+[
+  {
+    "id": "hemoup",
+    "name": "HemoUp",
+    "whatIs": "Application to encourage blood donation",
+    "smallDescription": "HemoUp is a platform that makes the blood donation process easier, more engaging, and more organized!",
+    "technologies": [
+      "Typescript",
+      "React Native",
+      "NextJS",
+      "Java",
+      "Spring Boot",
+      "TailwindCSS"
+    ],
+    "link": "https://www.hemoup.com.br/",
+    "logo": "/assets/hemoup-logo.png",
+    "role": "Founder and Full Stack Developer",
+    "responsibilities": [
+      "Founder",
+      "Mobile Development",
+      "Back-end Development",
+      "Requirements Analysis",
+      "Marketing",
+      "Market Analysis",
+      "Project Planning",
+      "Cost and Revenue Projection"
+    ],
+    "description": "HemoUp emerged after a personal experience when I went to donate blood and realized the difficulties involved in the process.\n\nAfter that, through several conversations with the team from the blood center in my city, we decided together how the application should be built to solve these issues. At the same time, the city hall was launching pre-incubation/incubation programs to encourage innovation and the creation of startups in the city, and HemoUp was selected in 1st place in the program!\n\nSeveral mentorships were offered covering marketing, management, fundraising, legal aspects, and more. Because of this, the project now has a very solid foundation and its development will officially begin in 2026."
+  },
+  {
+    "id": "zshop",
+    "name": "Zshop - Sales Chat",
+    "whatIs": "E-commerce and digital catalog integrated with WhatsApp",
+    "smallDescription": "Zshop is the perfect virtual catalog for anyone who wants to manage sales easily and assist customers quickly.",
+    "technologies": [
+      "Typescript",
+      "React",
+      "NextJS",
+      "NestJS",
+      "Fastify",
+      "TailwindCSS"
+    ],
+    "link": "https://www.zshop.plus/",
+    "logo": "/assets/zshop-logo.webp",
+    "role": "Full Stack Developer",
+    "responsibilities": [
+      "Full Stack Development",
+      "Mobile Development",
+      "Docker Orchestration",
+      "Requirements Analysis",
+      "CI/CD"
+    ],
+    "description": "Zshop is a digital platform designed to generate sales integrated with WhatsApp. I worked across all 6 repositories that the project had: API, Admin Frontend, Catalog Frontend, Mobile App, WhatsApp Integration, and an Orchestrator responsible for spinning up Docker instances for these integrations."
+  },
+  {
+    "id": "pupilens",
+    "name": "Pupilens",
+    "whatIs": "Lens demonstration tool for optical stores",
+    "smallDescription": "Have you ever thought about modernizing your optical store and demonstrating different types of lens distortions, treatments, refractions, and colors during a sale? Pupilens is made for that.",
+    "technologies": [
+      "Typescript",
+      "React Native",
+      "C#",
+      ".NET"
+    ],
+    "link": "https://www.pupilens.com.br/",
+    "logo": "/assets/pupilens-logo.webp",
+    "role": "Mobile Developer",
+    "responsibilities": [
+      "Mobile Development",
+      "Support"
+    ],
+    "description": "I work as a Mobile Developer on this project, dealing with heavy data manipulation and SVG rendering, which requires strong knowledge of mobile performance optimization."
+  },
+  {
+    "id": "kerootica",
+    "name": "Kero Ótica",
+    "whatIs": "Complete ERP for optical stores",
+    "smallDescription": "Secure and simple to control sales, issue invoices, manage inventory, and much more. Discover the system that streamlines optical store operations and improves results.",
+    "technologies": [
+      "Typescript",
+      "VueJS",
+      "C#",
+      ".NET"
+    ],
+    "link": "https://kerootica.com.br/",
+    "logo": "/assets/kerootica-logo.webp",
+    "role": "Full Stack Developer",
+    "responsibilities": [
+      "Full Stack Development"
+    ],
+    "description": "I recently started working on Kero Ótica, an ERP specialized for optical stores. Currently, I contribute to the development of features aimed at improving the user experience, such as easier system navigation and better data and report visualization."
+  },
+  {
+    "id": "batterycommerce",
+    "name": "BatteryCommerce",
+    "whatIs": "E-commerce integrated with payment and shipping methods",
+    "smallDescription": "This was my first large-scale project, developed as the final project (TCC) of my undergraduate degree.",
+    "technologies": [
+      "Typescript",
+      "React",
+      "Bootstrap",
+      "Java",
+      "Spring Boot"
+    ],
+    "link": null,
+    "logo": "/assets/batterycommerce-logo.png",
+    "role": "Founder and Full Stack Developer",
+    "responsibilities": [
+      "Founder",
+      "Full Stack Development",
+      "Requirements Analysis"
+    ],
+    "description": "We could say this was my first major project! It was here that my passion for software development truly deepened.\n\nIn 6 months, I learned about building APIs with Java and Spring Boot, implemented complex business rules such as sales, deliveries, payments, and shipping calculations based on product weight and dimensions. I also integrated external APIs for shipping calculations and payment generation using Boleto, Pix, and Credit Card.\n\nI also worked on documentation, creating multiple diagrams, a data dictionary, detailed requirements specifications, and more.\n\nIn short, everything expected from a complete and well-structured software project.\n\nI’m proud to say that I received the highest possible grade for the implementation of this project."
+  }
+]

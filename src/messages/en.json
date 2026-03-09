@@ -1,0 +1,88 @@
+{
+  "navbar": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "openMenu": "Open navigation menu"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Some of the projects I have developed throughout my professional journey.",
+    "viewAll": "View all projects"
+  },
+  "project": {
+    "visit": "Visit project",
+    "myActions": "My role",
+    "myResponsibilities": "Main responsibilities"
+  },
+  "about": {
+    "title": "About me",
+    "hero": {
+      "paragraph1": "I am a fullstack developer, passionate about technology, software architecture, and transforming ideas into real, scalable, and well-built products.",
+      "paragraph2": "When developing software, I always think about the client and what could help them. Sometimes it might be something simple, or even \"boring\" to program, but these small details are what make the user's life easier and keep the client engaged with the product."
+    },
+    "story": {
+      "title": "My story",
+      "paragraph1": "My journey in technology began during my undergraduate studies, when I realized that programming was much more than writing code — it was about solving real problems.",
+      "paragraph2": "Also, through the influence of great professors I had, I developed the desire to contribute to the next generation of developers. That is how I also started working as a higher education professor.",
+      "paragraph3": "Today, I work with complete digital products, taking care of frontend, backend, and architecture decisions."
+    },
+    "values": [
+      "Architecture and best practices",
+      "Experience with real products",
+      "Product mindset",
+      "Clear communication"
+    ],
+    "professionalExperience": {
+      "title": "Professional experience"
+    },
+    "academicExperience": {
+      "title": "Academic background"
+    },
+    "technologies": {
+      "title": "Technologies",
+      "list": [
+        "TypeScript",
+        "React",
+        "Next.js",
+        "React Native",
+        "Node.js",
+        "NestJS",
+        "Java",
+        "Spring Boot",
+        ".NET",
+        "TailwindCSS",
+        "PostgreSQL",
+        "Docker"
+      ]
+    }
+  },
+  "contact": {
+    "title": "Let's talk?",
+    "description": "If you have an idea or need someone to turn your project into reality, I can help you from planning to deployment.",
+    "benefits": [
+      "Architecture and best practices",
+      "Complete frontend and backend",
+      "High-performance and secure APIs",
+      "Clear and fast communication"
+    ],
+    "actions": {
+      "email": "Send email",
+      "whatsapp": "WhatsApp",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "responseTime": "I usually reply within 24 hours."
+  },
+  "hero": {
+    "greeting": "Hello, I am",
+    "name": "João Alavarse",
+    "description": "Full Stack Developer focused on modern, high-performance, and well-architected applications using React, React Native, and Java with Spring Boot.",
+    "actions": {
+      "about": "Get to know me",
+      "contact": "Contact me"
+    },
+    "imageAlt": "Photo of João Alavarse"
+  }
+}

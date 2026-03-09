@@ -1,0 +1,34 @@
+[
+  {
+    "title": "HemoUp",
+    "subtitle": "Fundador y Desarrollador Full Stack",
+    "period": "2024 - Actualidad",
+    "type": "project",
+    "current": true,
+    "description": "Plataforma completa (web, mobile y backend) enfocada en incentivar la donación de sangre, organizar bancos de sangre y reducir desperdicios."
+  },
+  {
+    "title": "Facultad UMFG",
+    "subtitle": "Profesor de Educación Superior",
+    "period": "2025 - Actualidad",
+    "type": "work",
+    "current": true,
+    "description": "Profesor de los cursos de Análisis y Desarrollo de Sistemas e Ingeniería Civil."
+  },
+  {
+    "title": "Log Sistemas",
+    "subtitle": "Desarrollador Full Stack",
+    "period": "2025 - Actualidad",
+    "type": "work",
+    "current": true,
+    "description": "Desarrollo de diferentes plataformas, incluyendo ERP, demostrador de lentes y chatbot con IA."
+  },
+  {
+    "title": "Grupo DBM",
+    "subtitle": "Desarrollador Full Stack",
+    "period": "2024 - 2025",
+    "type": "work",
+    "current": false,
+    "description": "Desarrollo de plataforma de e-commerce y catálogo digital integrado con WhatsApp."
+  }
+]

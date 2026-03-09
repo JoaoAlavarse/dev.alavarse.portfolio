@@ -1,0 +1,116 @@
+[
+  {
+    "id": "hemoup",
+    "name": "HemoUp",
+    "whatIs": "Aplicación para incentivar la donación de sangre",
+    "smallDescription": "HemoUp es una plataforma que hace que el proceso de donación de sangre sea más fácil, divertido y organizado.",
+    "technologies": [
+      "Typescript",
+      "React Native",
+      "NextJS",
+      "Java",
+      "Spring Boot",
+      "TailwindCSS"
+    ],
+    "link": "https://www.hemoup.com.br/",
+    "logo": "/assets/hemoup-logo.png",
+    "role": "Fundador y Desarrollador Full Stack",
+    "responsibilities": [
+      "Fundador",
+      "Desarrollo Mobile",
+      "Desarrollo Back End",
+      "Análisis de Requisitos",
+      "Marketing",
+      "Análisis de Mercado",
+      "Planificación del Proyecto",
+      "Proyección de Costos e Ingresos"
+    ],
+    "description": "HemoUp surgió después de una experiencia personal en la que fui a donar sangre y me di cuenta de las dificultades del proceso.\n\nDespués de eso, tras varias conversaciones con el equipo del banco de sangre de mi ciudad, decidimos juntos cómo debería construirse la aplicación para resolver estos problemas. Al mismo tiempo, el ayuntamiento estaba lanzando programas de pre-incubación e incubación para fomentar la innovación y la creación de startups en la ciudad, ¡y HemoUp fue seleccionado en 1.º lugar en la convocatoria!\n\nSe ofrecieron varias mentorías sobre marketing, gestión, captación de recursos, aspectos legales, entre otros. Gracias a esto, el proyecto tiene una base muy sólida y su desarrollo comenzará oficialmente en 2026."
+  },
+  {
+    "id": "zshop",
+    "name": "Zshop - Chat de Ventas",
+    "whatIs": "E-commerce y catálogo digital integrado con WhatsApp",
+    "smallDescription": "Zshop es el catálogo virtual perfecto para quienes desean gestionar ventas con facilidad y atender clientes con rapidez.",
+    "technologies": [
+      "Typescript",
+      "React",
+      "NextJS",
+      "NestJS",
+      "Fastify",
+      "TailwindCSS"
+    ],
+    "link": "https://www.zshop.plus/",
+    "logo": "/assets/zshop-logo.webp",
+    "role": "Desarrollador Full Stack",
+    "responsibilities": [
+      "Desarrollo Full Stack",
+      "Desarrollo Mobile",
+      "Orquestación con Docker",
+      "Análisis de Requisitos",
+      "CI/CD"
+    ],
+    "description": "Zshop es una plataforma digital diseñada para generar ventas integradas con WhatsApp. Trabajé en los 6 repositorios que tenía el proyecto: API, Frontend Administrativo, Frontend del Catálogo, App Mobile, Integración con WhatsApp y un Orquestador responsable de levantar instancias Docker para estas integraciones."
+  },
+  {
+    "id": "pupilens",
+    "name": "Pupilens",
+    "whatIs": "Demostrador de lentes para ópticas",
+    "smallDescription": "¿Alguna vez pensaste en modernizar tu óptica y demostrar los diferentes tipos de distorsiones, tratamientos, refracciones y colores de las lentes durante una venta? Pupilens es para eso.",
+    "technologies": [
+      "Typescript",
+      "React Native",
+      "C#",
+      ".NET"
+    ],
+    "link": "https://www.pupilens.com.br/",
+    "logo": "/assets/pupilens-logo.webp",
+    "role": "Desarrollador Mobile",
+    "responsibilities": [
+      "Desarrollo Mobile",
+      "Soporte"
+    ],
+    "description": "Trabajo como desarrollador mobile en este proyecto, realizando grandes manipulaciones de datos y SVGs, lo que requiere un buen conocimiento sobre optimización de rendimiento en aplicaciones móviles."
+  },
+  {
+    "id": "kerootica",
+    "name": "Kero Ótica",
+    "whatIs": "ERP completo para ópticas",
+    "smallDescription": "Seguro y simple para controlar ventas, emitir facturas, gestionar inventario y mucho más. Conoce el sistema que agiliza las actividades de la óptica y mejora los resultados.",
+    "technologies": [
+      "Typescript",
+      "VueJS",
+      "C#",
+      ".NET"
+    ],
+    "link": "https://kerootica.com.br/",
+    "logo": "/assets/kerootica-logo.webp",
+    "role": "Desarrollador Full Stack",
+    "responsibilities": [
+      "Desarrollo Full Stack"
+    ],
+    "description": "Recientemente comencé a trabajar en Kero Ótica, un ERP especializado para ópticas. Actualmente participo en el desarrollo de funcionalidades enfocadas en mejorar la experiencia del usuario, como facilitar la navegación por el sistema y mejorar la visualización de datos e informes."
+  },
+  {
+    "id": "batterycommerce",
+    "name": "BatteryCommerce",
+    "whatIs": "E-commerce integrado con métodos de pago y envío",
+    "smallDescription": "Este fue mi primer proyecto de gran escala, desarrollado como el trabajo final (TCC) de mi carrera universitaria.",
+    "technologies": [
+      "Typescript",
+      "React",
+      "Bootstrap",
+      "Java",
+      "Spring Boot"
+    ],
+    "link": null,
+    "logo": "/assets/batterycommerce-logo.png",
+    "role": "Fundador y Desarrollador Full Stack",
+    "responsibilities": [
+      "Fundador",
+      "Desarrollo Full Stack",
+      "Análisis de Requisitos"
+    ],
+    "description": "Podemos decir que fue mi primer gran proyecto. ¡Aquí fue donde mi pasión por el desarrollo de software realmente se profundizó!\n\nEn 6 meses aprendí a desarrollar APIs con Java y Spring Boot, implementé reglas de negocio complejas como ventas, entregas, pagos y cálculo de peso y dimensiones de productos para el envío. También integré APIs externas para el cálculo de fletes y para generar pagos con Boleto, Pix y tarjeta de crédito.\n\nAdemás, trabajé en la documentación del proyecto, creando varios diagramas, diccionario de datos, especificaciones detalladas de requisitos y más.\n\nEn resumen, todo lo que se espera de un software completo y bien estructurado.\n\nMe enorgullece decir que obtuve la máxima calificación por la implementación de este proyecto."
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "title": "HemoUp",
+    "subtitle": "Founder & Full Stack Developer",
+    "period": "2024 - Present",
+    "type": "project",
+    "current": true,
+    "description": "Complete platform (web, mobile, and backend) focused on encouraging blood donation, organizing blood centers, and reducing waste."
+  },
+  {
+    "title": "UMFG College",
+    "subtitle": "Higher Education Professor",
+    "period": "2025 - Present",
+    "type": "work",
+    "current": true,
+    "description": "Professor in the Systems Analysis and Development and Civil Engineering programs."
+  },
+  {
+    "title": "Log Sistemas",
+    "subtitle": "Full Stack Developer",
+    "period": "2025 - Present",
+    "type": "work",
+    "current": true,
+    "description": "Development of different platforms including an ERP, lens demonstration system, and an AI chatbot."
+  },
+  {
+    "title": "DBM Group",
+    "subtitle": "Full Stack Developer",
+    "period": "2024 - 2025",
+    "type": "work",
+    "current": false,
+    "description": "Development of an e-commerce platform and digital catalog integrated with WhatsApp."
+  }
+]
