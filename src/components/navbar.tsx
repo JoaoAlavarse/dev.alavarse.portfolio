@@ -6,6 +6,9 @@ import { Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { getDictionary } from "@/lib/get-dictionary";
+import { LanguageSwitcher } from "./language-switcher";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 export function Navbar({ locale }: { locale: "pt" | "en" | "es" }) {
   const dict: any = getDictionary(locale);
@@ -19,13 +22,29 @@ export function Navbar({ locale }: { locale: "pt" | "en" | "es" }) {
   return (
     <header className="border-b">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
-        <Link href={`/${locale}`} className="text-lg font-semibold flex gap-4 items-center">
-          <Image src="/logo.svg" alt="AlavarseDev Logo" width={52} height={52} priority />
-          <Image src="/name-logo.svg" alt="AlavarseDev" width={140} height={32} priority />
+        {/* Logo */}
+        <Link
+          href={`/${locale}`}
+          className="text-lg font-semibold flex gap-4 items-center"
+        >
+          <Image
+            src="/logo.svg"
+            alt="AlavarseDev Logo"
+            width={52}
+            height={52}
+            priority
+          />
+          <Image
+            src="/name-logo.svg"
+            alt="AlavarseDev"
+            width={140}
+            height={32}
+            priority
+          />
         </Link>
 
         {/* Desktop */}
-        <nav className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -35,28 +54,38 @@ export function Navbar({ locale }: { locale: "pt" | "en" | "es" }) {
               {item.label}
             </Link>
           ))}
-        </nav>
+
+          {/* LanguageSwitcher inline */}
+          <LanguageSwitcher currentLocale={locale} />
+        </div>
 
         {/* Mobile */}
         <Sheet>
           <SheetTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              aria-label={dict.navbar.openMenu}
-            >
+            <Button variant="ghost" size="icon" className="md:hidden">
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
 
           <SheetContent side="right">
+            <VisuallyHidden>
+              <DialogTitle>Menu de Navegação</DialogTitle>
+            </VisuallyHidden>
             <nav className="flex flex-col gap-4 mt-8 p-4">
               {navItems.map((item) => (
-                <Link key={item.href} href={item.href} className="text-lg font-medium">
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-lg font-medium"
+                >
                   {item.label}
                 </Link>
               ))}
+
+              {/* LanguageSwitcher dentro do menu mobile */}
+              <div className="mt-4">
+                <LanguageSwitcher currentLocale={locale} />
+              </div>
             </nav>
           </SheetContent>
         </Sheet>
