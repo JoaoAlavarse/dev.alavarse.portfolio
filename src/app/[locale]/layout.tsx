@@ -139,6 +139,10 @@ export async function generateMetadata({
         name: "João Alavarse",
         url: "https://www.linkedin.com/in/joao-alavarse/",
       },
+      {
+        name: "João Paulo Almeida Alavarse",
+        url: "https://www.linkedin.com/in/joao-alavarse/",
+      },
     ],
 
     creator: "João Alavarse",
