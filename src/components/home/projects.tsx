@@ -1,26 +1,20 @@
 import Link from "next/link";
 import ProjectCard from "../project-card";
 import { Button } from "../ui/button";
-import projectsEn from "@/data/projects-en.json";
-import projectsEs from "@/data/projects-es.json";
-import projectsPt from "@/data/projects-pt.json";
 import { getDictionary } from "@/lib/get-dictionary";
+import { getProjects } from "@/lib/get-projects";
+import type { Locale } from "@/interfaces";
 
 export default async function ProjectsList({
   params,
 }: {
-  params: Promise<{ locale: "pt" | "en" | "es" }>;
+  params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
 
-  const dict: any = getDictionary(locale);
-  const projects =
-    locale === "en"
-      ? projectsEn
-      : locale === "es"
-        ? projectsEs
-        : projectsPt;
-  const projectsToShow = projects.sort(() => Math.random() - 0.5).slice(0, 3);
+  const dict = getDictionary(locale);
+  const projects = getProjects(locale);
+  const projectsToShow = projects.slice(0, 3);
 
   return (
     <section className="py-24" id="projetos">

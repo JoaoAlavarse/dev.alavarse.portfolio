@@ -2,7 +2,7 @@ import { TimelineItem } from "@/interfaces";
 import { motion } from "framer-motion";
 import { Briefcase, GraduationCap, Rocket } from "lucide-react";
 
-export function Timeline({ items }: { items: TimelineItem[] }) {
+export function Timeline({ items, currentLabel }: { items: TimelineItem[]; currentLabel: string }) {
   const icons = {
     work: Briefcase,
     education: GraduationCap,
@@ -51,7 +51,7 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
                   </span>
                   {item.current && (
                     <span className="ml-auto rounded-full bg-purple-500/10 px-2 py-0.5 text-xs text-purple-400">
-                      Atual
+                      {currentLabel}
                     </span>
                   )}
                 </div>

@@ -4,11 +4,9 @@ import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Footer } from "@/components/footer";
 import { Analytics } from "@vercel/analytics/next";
+import type { Locale } from "@/interfaces";
 import { getDictionary } from "@/lib/get-dictionary";
 
-type Locale = "pt" | "en" | "es";
-
-// O Next.js exige que params aceite string genérica para validar o roteamento
 type LayoutProps = {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
@@ -31,7 +29,7 @@ export async function generateMetadata({
     pt: {
       title: "AlavarseDev | Desenvolvedor Full Stack",
       description:
-        "João Alavarse, desenvolvedor Full Stack especializado em React, Tailwind, Java e Spring Boot.",
+        "João Alavarse, desenvolvedor Full Stack especializado em React, Next.js, Java e Spring Boot para produtos digitais performaticos.",
       locale: "pt_BR",
       keywords: [
         "desenvolvedor full stack",
@@ -49,7 +47,7 @@ export async function generateMetadata({
     en: {
       title: "AlavarseDev | Full Stack Developer",
       description:
-        "João Alavarse, Full Stack developer specialized in React, Tailwind, Java and Spring Boot.",
+        "João Alavarse, Full Stack developer specialized in React, Next.js, Java, and Spring Boot for scalable digital products.",
       locale: "en_US",
       keywords: [
         "full stack developer",
@@ -70,7 +68,7 @@ export async function generateMetadata({
     es: {
       title: "AlavarseDev | Desarrollador Full Stack",
       description:
-        "João Alavarse, desarrollador Full Stack especializado en React, Tailwind, Java y Spring Boot.",
+        "João Alavarse, desarrollador Full Stack especializado en React, Next.js, Java y Spring Boot para productos digitales escalables.",
       locale: "es_ES",
       keywords: [
         "desarrollador Full Stack",
@@ -105,21 +103,12 @@ export async function generateMetadata({
       siteName: "AlavarseDev",
       locale: data.locale,
       type: "website",
-      images: [
-        {
-          url: "/web-app-manifest-512x512.png",
-          width: 512,
-          height: 512,
-          alt: "AlavarseDev Portfolio",
-        },
-      ],
     },
 
     twitter: {
       card: "summary_large_image",
       title: data.title,
       description: data.description,
-      images: ["/web-app-manifest-512x512.png"],
     },
 
     robots: {
@@ -158,9 +147,8 @@ export function generateStaticParams() {
 export default async function RootLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
 
-  // Forçamos o tipo aqui para o restante do código funcionar com seu tipo Locale
   const currentLocale = locale as Locale;
-  const dict: any = getDictionary(currentLocale);
+  const dict = getDictionary(currentLocale);
 
   return (
     <html
@@ -183,6 +171,12 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         />
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased overflow-x-hidden">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+        >
+          {dict.accessibility.skipToContent}
+        </a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -215,11 +209,29 @@ export default async function RootLayout({ children, params }: LayoutProps) {
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "AlavarseDev",
+              url: "https://alavarsedev.com.br",
+              inLanguage: ["pt-BR", "en-US", "es-ES"],
+              author: {
+                "@type": "Person",
+                name: "João Alavarse",
+              },
+            }),
+          }}
+        />
         <Analytics />
         <ThemeProvider>
           <Navbar locale={currentLocale} />
-          {children}
-          <Footer />
+          <div id="main-content">
+            {children}
+          </div>
+          <Footer locale={currentLocale} />
         </ThemeProvider>
       </body>
     </html>

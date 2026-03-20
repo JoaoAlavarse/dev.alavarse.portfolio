@@ -7,54 +7,96 @@ import academicExperienceEs from "@/data/academic-experience-es.json";
 import professionalExperiencePt from "@/data/professional-experience-pt.json";
 import professionalExperienceEn from "@/data/professional-experience-en.json";
 import professionalExperienceEs from "@/data/professional-experience-es.json";
-import { TimelineItem } from "@/interfaces";
+import { TimelineItem, type Locale } from "@/interfaces";
 import { Metadata } from "next";
 import ClientTimeline from "@/components/client-timeline";
 import { getDictionary } from "@/lib/get-dictionary";
 
-export const metadata: Metadata = {
-  title: "João Alavarse | Desenvolvedor Fullstack",
-  description:
-    "João Paulo Almeida Alavarse, desenvolvedor fullstack com experiência em React, Next.js, Node.js, Java, arquitetura de software e produtos digitais.",
-  keywords: [
-    "João Alavarse",
-    "desenvolvedor fullstack",
-    "React",
-    "Next.js",
-    "Node.js",
-    "Java",
-    "Spring Boot",
-    "React Native",
-    "portfólio desenvolvedor",
-  ],
-  alternates: {
-    canonical: "/sobre",
-  },
-  openGraph: {
-    title: "Sobre mim | João Alavarse",
-    description:
-      "Desenvolvedor fullstack focado em produtos reais, arquitetura de software e experiência do usuário.",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}/sobre`,
-    siteName: "João Alavarse",
-    images: [
-      {
-        url: `/joao-alavarse.jpeg`,
-        width: 1200,
-        height: 630,
-        alt: "João Alavarse – Desenvolvedor Fullstack",
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  const seo = {
+    pt: {
+      title: "Sobre | João Alavarse",
+      description:
+        "Conheça a trajetória de João Alavarse, desenvolvedor Full Stack com experiência em React, Next.js, Java e arquitetura de software.",
+      locale: "pt_BR",
+      keywords: [
+        "João Alavarse",
+        "desenvolvedor fullstack",
+        "React",
+        "Next.js",
+        "Node.js",
+        "Java",
+        "Spring Boot",
+      ],
+    },
+    en: {
+      title: "About | João Alavarse",
+      description:
+        "Learn more about João Alavarse, a Full Stack developer experienced in React, Next.js, Java, and software architecture.",
+      locale: "en_US",
+      keywords: [
+        "João Alavarse",
+        "full stack developer",
+        "React",
+        "Next.js",
+        "Node.js",
+        "Java",
+        "Spring Boot",
+      ],
+    },
+    es: {
+      title: "Sobre mí | João Alavarse",
+      description:
+        "Conoce más sobre João Alavarse, desarrollador Full Stack con experiencia en React, Next.js, Java y arquitectura de software.",
+      locale: "es_ES",
+      keywords: [
+        "João Alavarse",
+        "desarrollador full stack",
+        "React",
+        "Next.js",
+        "Node.js",
+        "Java",
+        "Spring Boot",
+      ],
+    },
+  };
+
+  const data = seo[locale];
+
+  return {
+    title: data.title,
+    description: data.description,
+    keywords: data.keywords,
+    alternates: {
+      canonical: `/${locale}/sobre`,
+      languages: {
+        pt: "/pt/sobre",
+        en: "/en/sobre",
+        es: "/es/sobre",
+        "x-default": "/en/sobre",
       },
-    ],
-    locale: "pt_BR",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Sobre mim | João Alavarse",
-    description:
-      "Desenvolvedor fullstack com foco em arquitetura, produtos digitais e experiência real de mercado.",
-    images: [`${process.env.NEXT_PUBLIC_BASE_URL}/joao-alavarse.jpeg`],
-  },
-};
+    },
+    openGraph: {
+      title: data.title,
+      description: data.description,
+      url: `/${locale}/sobre`,
+      siteName: "AlavarseDev",
+      locale: data.locale,
+      type: "profile",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.title,
+      description: data.description,
+    },
+  };
+}
 
 export default async function AboutPage({
   params,
@@ -77,7 +119,7 @@ export default async function AboutPage({
         <div className="relative rounded-2xl bg-background/60 backdrop-blur-lg border border-white/10 p-2 shadow-xl">
           <Image
             src="/joao-alavarse.jpeg"
-            alt="João Alavarse, desenvolvedor fullstack"
+            alt={dict.hero.imageAlt}
             width={360}
             height={450}
             className="rounded-xl object-cover grayscale hover:grayscale-0 transition duration-300"
@@ -111,7 +153,7 @@ export default async function AboutPage({
           <div className="relative rounded-2xl bg-background/60 backdrop-blur-lg border border-white/10 p-2 shadow-xl">
             <Image
               src="/joao-alavarse.jpeg"
-              alt="João Alavarse, desenvolvedor fullstack"
+              alt={dict.hero.imageAlt}
               width={360}
               height={450}
               className="rounded-xl object-cover grayscale hover:grayscale-0 transition duration-300"
@@ -153,14 +195,14 @@ export default async function AboutPage({
       <section>
         <h2 className="text-3xl font-bold">{dict.about.professionalExperience.title}</h2>
 
-        <ClientTimeline items={professionalExperience as TimelineItem[]} />
+        <ClientTimeline items={professionalExperience as TimelineItem[]} currentLabel={dict.timeline.current} />
       </section>
 
       {/* FORMAÇÃO */}
       <section>
         <h2 className="text-3xl font-bold">{dict.about.academicExperience.title}</h2>
 
-        <ClientTimeline items={academicExperience as TimelineItem[]} />
+        <ClientTimeline items={academicExperience as TimelineItem[]} currentLabel={dict.timeline.current} />
       </section>
 
       {/* TECNOLOGIAS */}

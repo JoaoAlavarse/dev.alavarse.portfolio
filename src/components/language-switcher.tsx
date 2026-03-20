@@ -1,8 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-
-type Locale = "pt" | "en" | "es";
+import type { Locale } from "@/interfaces";
 
 const locales: { label: string; code: Locale }[] = [
   { label: "PT", code: "pt" },

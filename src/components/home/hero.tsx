@@ -3,8 +3,9 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getDictionary } from "@/lib/get-dictionary";
+import type { Locale } from "@/interfaces";
 
-export async function Hero({ params }: { params: Promise<{ locale: "pt" | "en" | "es" }> }) {
+export async function Hero({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const dict = getDictionary(locale);
 
@@ -28,6 +29,10 @@ export async function Hero({ params }: { params: Promise<{ locale: "pt" | "en" |
               <Link href={`/${locale}/sobre`}>
                 {dict.hero.actions.about} <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
+            </Button>
+
+            <Button asChild size="lg" variant="secondary">
+              <Link href={`/${locale}/projetos`}>{dict.projects.viewAll}</Link>
             </Button>
 
             <Button asChild size="lg" variant="outline">

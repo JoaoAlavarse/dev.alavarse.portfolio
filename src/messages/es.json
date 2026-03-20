@@ -1,10 +1,44 @@
 {
+  "accessibility": {
+    "skipToContent": "Saltar al contenido"
+  },
   "navbar": {
     "home": "Inicio",
     "projects": "Proyectos",
     "about": "Sobre mí",
     "contact": "Contacto",
     "openMenu": "Abrir menú de navegación"
+  },
+  "stats": {
+    "title": "En números",
+    "items": [
+      { "value": "5+", "label": "Proyectos entregados" },
+      { "value": "3+", "label": "Años de experiencia" },
+      { "value": "12+", "label": "Tecnologías dominadas" },
+      { "value": "6", "label": "Repositorios en un solo proyecto" }
+    ]
+  },
+  "services": {
+    "title": "Qué hago",
+    "description": "Transformo ideas en productos digitales completos, desde la planificación hasta la entrega.",
+    "items": [
+      {
+        "title": "Aplicaciones Web",
+        "description": "Interfaces modernas y responsivas con React, Next.js y TailwindCSS, optimizadas para rendimiento y SEO."
+      },
+      {
+        "title": "Aplicaciones Mobile",
+        "description": "Apps nativas multiplataforma con React Native, enfocadas en experiencia de usuario y rendimiento."
+      },
+      {
+        "title": "APIs y Backend",
+        "description": "APIs robustas y escalables con Java/Spring Boot y Node.js/NestJS, con arquitectura limpia y buenas prácticas."
+      },
+      {
+        "title": "Consultoría Técnica",
+        "description": "Análisis de arquitectura, revisión de código y mentoría para equipos que buscan calidad y escalabilidad."
+      }
+    ]
   },
   "projects": {
     "title": "Proyectos",
@@ -14,7 +48,10 @@
   "project": {
     "visit": "Visitar proyecto",
     "myActions": "Mi rol",
-    "myResponsibilities": "Principales responsabilidades"
+    "myResponsibilities": "Principales responsabilidades",
+    "technologies": "Tecnologías",
+    "seeDetails": "Ver detalles →",
+    "officialSite": "Sitio oficial"
   },
   "about": {
     "title": "Sobre mí",
@@ -58,6 +95,23 @@
       ]
     }
   },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "items": [
+      {
+        "question": "¿Qué tecnologías utilizas?",
+        "answer": "Trabajo principalmente con React, Next.js, React Native, Java con Spring Boot, Node.js con NestJS, TypeScript y TailwindCSS."
+      },
+      {
+        "question": "¿Estás disponible para freelance?",
+        "answer": "¡Sí! Estoy abierto a proyectos freelance y asociaciones. Contáctame para hablar sobre tu proyecto."
+      },
+      {
+        "question": "¿Cuál es tu proceso de trabajo?",
+        "answer": "Comienzo entendiendo el problema y los requisitos, defino la arquitectura, desarrollo de forma iterativa y entrego con documentación y pruebas."
+      }
+    ]
+  },
   "contact": {
     "title": "¿Hablamos?",
     "description": "Si tienes una idea o necesitas a alguien para convertir tu proyecto en realidad, puedo ayudarte desde la planificación hasta el despliegue.",
@@ -75,9 +129,21 @@
     },
     "responseTime": "Normalmente respondo dentro de 24 horas."
   },
+  "timeline": {
+    "current": "Actual"
+  },
+  "footer": {
+    "role": "Ingeniero Full Stack",
+    "copyright": "Todos los derechos reservados."
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o ha sido movida.",
+    "backHome": "Volver al inicio"
+  },
   "hero": {
     "name": "João Paulo Almeida Alavarse",
-    "description": "Desarrollador Full Stack enfocado en aplicaciones modernas, de alto rendimiento y bien arquitectadas utilizando React, React Native y Java con Spring Boot.",
+    "description": "Desarrollador Full Stack, fundador de startup y profesor universitario. Construyo productos digitales de cero al deploy — desde e-commerces completos hasta plataformas de salud — con React, React Native, Java y Spring Boot.",
     "actions": {
       "about": "Conóceme",
       "contact": "Ponerse en contacto"

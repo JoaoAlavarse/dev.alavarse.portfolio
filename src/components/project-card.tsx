@@ -1,10 +1,10 @@
-import { IProject } from "@/interfaces";
+import { IProject, type Locale } from "@/interfaces";
 import Image from "next/image";
 import Link from "next/link";
+import { getDictionary } from "@/lib/get-dictionary";
 
-export default function ProjectCard({ project, locale }: { project: IProject; locale: "pt" | "en" | "es" }) {
-  const seeDetailsText = locale === "en" ? "See details →" : locale === "es" ? "Ver detalles →" : "Ver detalhes →";
-  const officialSiteText = locale === "en" ? "Official site" : locale === "es" ? "Sitio oficial" : "Site oficial";
+export default function ProjectCard({ project, locale }: { project: IProject; locale: Locale }) {
+  const dict = getDictionary(locale);
   return (
     <div className="rounded-xl border p-5 hover:border-foreground/30 transition">
       <div className="relative h-40 w-full bg-black/5 dark:bg-white/5 rounded-lg mb-4">
@@ -23,12 +23,25 @@ export default function ProjectCard({ project, locale }: { project: IProject; lo
         {project.smallDescription}
       </p>
 
+      {project.highlights && project.highlights.length > 0 && (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {project.highlights.map((highlight) => (
+            <span
+              key={highlight}
+              className="text-xs rounded-full bg-purple-500/10 px-3 py-1 text-purple-400 border border-purple-400/20"
+            >
+              {highlight}
+            </span>
+          ))}
+        </div>
+      )}
+
       <div className="flex justify-between items-center">
         <Link
           href={`/${locale}/projetos/${project.id}`}
           className="mt-4 inline-block text-sm font-medium hover:underline"
         >
-          {seeDetailsText}
+          {dict.project.seeDetails}
         </Link>
         {project.link && (
           <Link
@@ -37,7 +50,7 @@ export default function ProjectCard({ project, locale }: { project: IProject; lo
             target="_blank"
             rel="noopener noreferrer"
           >
-            {officialSiteText}
+            {dict.project.officialSite}
           </Link>
         )}
       </div>

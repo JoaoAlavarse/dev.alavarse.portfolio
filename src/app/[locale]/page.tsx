@@ -1,11 +1,15 @@
 import Contact from "@/components/home/contact";
 import { Hero } from "@/components/home/hero";
+import Services from "@/components/home/services";
+import Stats from "@/components/home/stats";
 import ProjectsList from "@/components/home/projects";
+import FAQ from "@/components/home/faq";
+import type { Locale } from "@/interfaces";
 
 export default function Home({
   params,
 }: {
-  params: Promise<{ locale: "pt" | "en" | "es" }>;
+  params: Promise<{ locale: Locale }>;
 }) {
   return (
     <main className="relative mx-auto max-w-6xl px-4">
@@ -15,7 +19,13 @@ export default function Home({
 
       <Hero params={params}/>
 
+      <Services params={params}/>
+
+      <Stats params={params}/>
+
       <ProjectsList params={params}/>
+
+      <FAQ params={params}/>
 
       <Contact params={params}/>
     </main>

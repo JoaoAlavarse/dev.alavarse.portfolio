@@ -1,12 +1,11 @@
-import projectsEn from "@/data/projects-en.json";
-import projectsEs from "@/data/projects-es.json";
-import projectsPt from "@/data/projects-pt.json";
 import ProjectCard from "@/components/project-card";
 import { Metadata } from "next";
 import { getDictionary } from "@/lib/get-dictionary";
+import { getProjects } from "@/lib/get-projects";
+import type { Locale } from "@/interfaces";
 
 type Props = {
-  params: Promise<{ locale: "pt" | "en" | "es" }>;
+  params: Promise<{ locale: Locale }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -38,6 +37,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     alternates: {
       canonical: `/${locale}/projetos`,
+      languages: {
+        pt: "/pt/projetos",
+        en: "/en/projetos",
+        es: "/es/projetos",
+        "x-default": "/en/projetos",
+      },
     },
 
     openGraph: {
@@ -45,18 +50,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: data.description,
       url: `/${locale}/projetos`,
       type: "website",
-      siteName: "João Alavarse",
+      siteName: "AlavarseDev",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.title,
+      description: data.description,
     },
   };
 }
 export default async function ProjectsPage({
   params,
 }: {
-  params: Promise<{ locale: "pt" | "en" | "es" }>;
+  params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
-  const dict: any = getDictionary(locale);
-  const projects = locale === "en" ? projectsEn : locale === "es" ? projectsEs : projectsPt;
+  const dict = getDictionary(locale);
+  const projects = getProjects(locale);
 
   return (
     <main className="container mx-auto px-6 py-24">

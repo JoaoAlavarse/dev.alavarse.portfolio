@@ -7,16 +7,18 @@ import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { getDictionary } from "@/lib/get-dictionary";
 import { LanguageSwitcher } from "./language-switcher";
+import { ThemeToggle } from "./theme-toggle";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { DialogTitle } from "@radix-ui/react-dialog";
+import type { Locale } from "@/interfaces";
 
-export function Navbar({ locale }: { locale: "pt" | "en" | "es" }) {
-  const dict: any = getDictionary(locale);
+export function Navbar({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
   const navItems = [
     { label: dict.navbar.home, href: `/${locale}` },
-    { label: dict.navbar.projects, href: `#projetos` },
-    { label: dict.navbar.about, href: `#sobre` },
-    { label: dict.navbar.contact, href: `#contato` },
+    { label: dict.navbar.projects, href: `/${locale}/projetos` },
+    { label: dict.navbar.about, href: `/${locale}/sobre` },
+    { label: dict.navbar.contact, href: `/${locale}#contato` },
   ];
 
   return (
@@ -55,8 +57,8 @@ export function Navbar({ locale }: { locale: "pt" | "en" | "es" }) {
             </Link>
           ))}
 
-          {/* LanguageSwitcher inline */}
           <LanguageSwitcher currentLocale={locale} />
+          <ThemeToggle />
         </div>
 
         {/* Mobile */}
@@ -69,7 +71,7 @@ export function Navbar({ locale }: { locale: "pt" | "en" | "es" }) {
 
           <SheetContent side="right">
             <VisuallyHidden>
-              <DialogTitle>Menu de Navegação</DialogTitle>
+              <DialogTitle>{dict.navbar.openMenu}</DialogTitle>
             </VisuallyHidden>
             <nav className="flex flex-col gap-4 mt-8 p-4">
               {navItems.map((item) => (
@@ -82,9 +84,9 @@ export function Navbar({ locale }: { locale: "pt" | "en" | "es" }) {
                 </Link>
               ))}
 
-              {/* LanguageSwitcher dentro do menu mobile */}
-              <div className="mt-4">
+              <div className="mt-4 flex items-center gap-4">
                 <LanguageSwitcher currentLocale={locale} />
+                <ThemeToggle />
               </div>
             </nav>
           </SheetContent>

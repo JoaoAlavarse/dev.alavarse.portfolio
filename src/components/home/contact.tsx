@@ -2,11 +2,12 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { Mail, MessageCircle, Check, Linkedin, Github } from "lucide-react";
 import { getDictionary } from "@/lib/get-dictionary";
+import type { Locale } from "@/interfaces";
 
 export default async function Contact({
   params,
 }: {
-  params: Promise<{ locale: "pt" | "en" | "es" }>;
+  params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
   const dict = getDictionary(locale);
@@ -43,7 +44,7 @@ export default async function Contact({
           {/* Actions */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild size="lg" className="gap-2">
-              <Link href="mailto:contato@alavarsedev.com">
+              <Link href="mailto:contato@alavarsedev.com.br">
                 <Mail className="h-4 w-4" />
                 {dict.contact.actions.email}
               </Link>

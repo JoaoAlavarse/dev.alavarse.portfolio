@@ -1,12 +1,13 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import projectsEn from "@/data/projects-en.json";
-import projectsEs from "@/data/projects-es.json";
-import projectsPt from "@/data/projects-pt.json";import { Button } from "@/components/ui/button";
-import { IProject } from "@/interfaces";
+import { Button } from "@/components/ui/button";
+import { IProject, type Locale } from "@/interfaces";
 import Link from "next/link";
 import Contact from "@/components/home/contact";
 import { getDictionary } from "@/lib/get-dictionary";
+import { getProjects } from "@/lib/get-projects";
+import { Metadata } from "next";
+import projectsPt from "@/data/projects-pt.json";
 
 export async function generateStaticParams() {
   const locales = ["pt", "en", "es"];
@@ -19,13 +20,14 @@ export async function generateStaticParams() {
   );
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { id: string; locale: string };
-}) {
-  const projects = params.locale === "en" ? projectsEn : params.locale === "es" ? projectsEs : projectsPt;
-  const project = projects.find((p) => p.id === params.id);
+  params: Promise<{ id: string; locale: Locale }>;
+}): Promise<Metadata> {
+  const { id, locale } = await params;
+  const projects = getProjects(locale);
+  const project = projects.find((p) => p.id === id);
 
   if (!project) return {};
 
@@ -34,22 +36,26 @@ export function generateMetadata({
     description: project.description,
 
     alternates: {
-      canonical: `/${params.locale}/projetos/${params.id}`,
+      canonical: `/${locale}/projetos/${id}`,
+      languages: {
+        pt: `/pt/projetos/${id}`,
+        en: `/en/projetos/${id}`,
+        es: `/es/projetos/${id}`,
+        "x-default": `/en/projetos/${id}`,
+      },
     },
 
     openGraph: {
       title: project.name,
       description: project.description,
-      url: `/${params.locale}/projetos/${params.id}`,
-      siteName: "João Alavarse",
+      url: `/${locale}/projetos/${id}`,
+      siteName: "AlavarseDev",
       type: "article",
-      images: [
-        {
-          url: project?.logo || "/og-default.png",
-          width: 1200,
-          height: 630,
-        },
-      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.name} | João Alavarse`,
+      description: project.smallDescription || project.description,
     },
   };
 }
@@ -60,10 +66,10 @@ export default async function ProjectDetailsPage({
   params: Promise<{ id: string; locale: "pt" | "en" | "es" }>;
 }) {
   const { id, locale } = await params;
-  const projects = locale === "en" ? projectsEn : locale === "es" ? projectsEs : projectsPt;
+  const projects = getProjects(locale);
 
   const project = projects.find((p) => p.id === id) as IProject | undefined;
-  const dict: any = getDictionary(locale);
+  const dict = getDictionary(locale);
 
   if (!project) return notFound();
 
@@ -78,7 +84,7 @@ export default async function ProjectDetailsPage({
         {/* glow da logo */}
         <div className="pointer-events-none absolute -inset-8 rounded-3xl bg-linear-to-br from-purple-500/30 to-blue-500/20 blur-3xl" />
 
-        <div className="relative flex p-4 items-center justify-center rounded-3xl border border-white/20 bg-zinc-900/70 backdrop-blur-xl shadow-[0_30px_80px_-20px_rgba(59,130,246,0.65)]">
+        <div className="relative flex p-4 items-center justify-center rounded-3xl border border-border bg-card/70 backdrop-blur-xl shadow-[0_30px_80px_-20px_rgba(59,130,246,0.65)]">
           <Image
             src={project.logo}
             alt={`${project.name} logo`}
@@ -91,7 +97,7 @@ export default async function ProjectDetailsPage({
 
       {/* HEADER */}
       <div className="flex justify-between">
-        <section className="relative max-w-3xl rounded-3xl border border-white/15 bg-zinc-900/70 backdrop-blur-xl p-12 shadow-[0_0_80px_-20px_rgba(168,85,247,0.45)]">
+        <section className="relative max-w-3xl rounded-3xl border border-border bg-card/70 backdrop-blur-xl p-12 shadow-[0_0_80px_-20px_rgba(168,85,247,0.45)]">
           {/* glow */}
           <div className="pointer-events-none absolute -inset-8 rounded-3xl bg-linear-to-r from-purple-500/20 via-blue-500/10 to-transparent blur-3xl" />
           <div className="relative">
@@ -101,6 +107,18 @@ export default async function ProjectDetailsPage({
             <p className="mt-6 text-lg text-muted-foreground">
               {project.smallDescription}
             </p>
+            {project.highlights && project.highlights.length > 0 && (
+              <div className="mt-4 flex flex-wrap gap-2">
+                {project.highlights.map((highlight: string) => (
+                  <span
+                    key={highlight}
+                    className="text-sm rounded-full bg-purple-500/10 px-4 py-1.5 text-purple-400 border border-purple-400/20"
+                  >
+                    {highlight}
+                  </span>
+                ))}
+              </div>
+            )}
             <p className="mt-6 text-lg text-muted-foreground whitespace-pre-line">
               {project.description}
             </p>
@@ -127,7 +145,7 @@ export default async function ProjectDetailsPage({
           {/* glow da logo */}
           <div className="pointer-events-none absolute -inset-8 rounded-3xl bg-linear-to-br from-purple-500/30 to-blue-500/20 blur-3xl" />
 
-          <div className="relative flex p-4 items-center justify-center rounded-3xl border border-white/20 bg-zinc-900/70 backdrop-blur-xl shadow-[0_30px_80px_-20px_rgba(59,130,246,0.65)]">
+          <div className="relative flex p-4 items-center justify-center rounded-3xl border border-border bg-card/70 backdrop-blur-xl shadow-[0_30px_80px_-20px_rgba(59,130,246,0.65)]">
             <Image
               src={project.logo}
               alt={`${project.name} logo`}
@@ -145,7 +163,7 @@ export default async function ProjectDetailsPage({
           {project.images.map((img: string) => (
             <div
               key={img}
-              className="rounded-2xl border border-white/10 bg-background/60 backdrop-blur-md p-3 shadow-lg"
+              className="rounded-2xl border border-border bg-background/60 backdrop-blur-md p-3 shadow-lg"
             >
               <Image
                 src={img}
@@ -159,16 +177,16 @@ export default async function ProjectDetailsPage({
         </section>
       )}
 
-      <aside className="rounded-2xl border border-white/10 bg-background/60 backdrop-blur-xl p-6 shadow-lg h-fit md:hidden block">
+      <aside className="rounded-2xl border border-border bg-background/60 backdrop-blur-xl p-6 shadow-lg h-fit md:hidden block">
         <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          Tecnologias
+          {dict.project.technologies}
         </h3>
 
         <ul className="mt-4 flex flex-wrap gap-2">
           {project.technologies.map((tech: string) => (
             <li
               key={tech}
-              className="rounded-full px-4 py-1 border border-white/10 bg-linear-to-r from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20 transition"
+              className="rounded-full px-4 py-1 border border-border bg-linear-to-r from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20 transition"
             >
               {tech}
             </li>
@@ -178,8 +196,8 @@ export default async function ProjectDetailsPage({
 
       {/* ATUAÇÃO */}
       {project.role && (
-        <section className="grid grid-cols-3 gap-16">
-          <div className="col-span-2">
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
+          <div className="md:col-span-2">
             <h2 className="text-3xl font-bold">{dict.project.myActions}</h2>
 
             <p className="mt-6 text-muted-foreground leading-relaxed text-lg">
@@ -196,7 +214,7 @@ export default async function ProjectDetailsPage({
                   {project.responsibilities.map((item: string) => (
                     <li
                       key={item}
-                      className="rounded-full px-5 py-2 text-sm border border-white/10 bg-linear-to-r from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20 transition"
+                      className="rounded-full px-5 py-2 text-sm border border-border bg-linear-to-r from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20 transition"
                     >
                       {item}
                     </li>
@@ -207,16 +225,16 @@ export default async function ProjectDetailsPage({
           </div>
 
           {/* TECNOLOGIAS */}
-          <aside className="rounded-2xl border border-white/10 bg-background/60 backdrop-blur-xl p-6 shadow-lg h-fit md:block hidden">
+          <aside className="rounded-2xl border border-border bg-background/60 backdrop-blur-xl p-6 shadow-lg h-fit md:block hidden">
             <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-              Tecnologias
+              {dict.project.technologies}
             </h3>
 
             <ul className="mt-4 flex flex-wrap gap-2">
               {project.technologies.map((tech: string) => (
                 <li
                   key={tech}
-                  className="rounded-full px-4 py-1 border border-white/10 bg-linear-to-r from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20 transition"
+                  className="rounded-full px-4 py-1 border border-border bg-linear-to-r from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20 transition"
                 >
                   {tech}
                 </li>
@@ -240,6 +258,35 @@ export default async function ProjectDetailsPage({
               "@type": "Person",
               name: "João Alavarse",
             },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: dict.navbar.home,
+                item: `https://alavarsedev.com.br/${locale}`,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: dict.navbar.projects,
+                item: `https://alavarsedev.com.br/${locale}/projetos`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: project.name,
+                item: `https://alavarsedev.com.br/${locale}/projetos/${project.id}`,
+              },
+            ],
           }),
         }}
       />
