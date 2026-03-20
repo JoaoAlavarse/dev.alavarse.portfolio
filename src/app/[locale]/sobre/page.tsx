@@ -15,7 +15,7 @@ import { getDictionary } from "@/lib/get-dictionary";
 export const metadata: Metadata = {
   title: "João Alavarse | Desenvolvedor Fullstack",
   description:
-    "Conheça João Alavarse, desenvolvedor fullstack com experiência em React, Next.js, Node.js, Java, arquitetura de software e produtos digitais.",
+    "João Paulo Almeida Alavarse, desenvolvedor fullstack com experiência em React, Next.js, Node.js, Java, arquitetura de software e produtos digitais.",
   keywords: [
     "João Alavarse",
     "desenvolvedor fullstack",

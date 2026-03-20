@@ -19,7 +19,7 @@
   "about": {
     "title": "About me",
     "hero": {
-      "paragraph1": "I am a fullstack developer, passionate about technology, software architecture, and transforming ideas into real, scalable, and well-built products.",
+      "paragraph1": "João Paulo Almeida Alavarse is a fullstack developer, passionate about technology, software architecture, and transforming ideas into real, scalable, and well-built products.",
       "paragraph2": "When developing software, I always think about the client and what could help them. Sometimes it might be something simple, or even \"boring\" to program, but these small details are what make the user's life easier and keep the client engaged with the product."
     },
     "story": {
@@ -76,13 +76,12 @@
     "responseTime": "I usually reply within 24 hours."
   },
   "hero": {
-    "greeting": "Hello, I am",
-    "name": "João Alavarse",
+    "name": "João Paulo Almeida Alavarse",
     "description": "Full Stack Developer focused on modern, high-performance, and well-architected applications using React, React Native, and Java with Spring Boot.",
     "actions": {
       "about": "Get to know me",
       "contact": "Contact me"
     },
-    "imageAlt": "Photo of João Alavarse"
+    "imageAlt": "Photo of João Paulo Almeida Alavarse"
   }
 }

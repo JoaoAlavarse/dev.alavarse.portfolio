@@ -14,7 +14,6 @@ export async function Hero({ params }: { params: Promise<{ locale: "pt" | "en" |
         {/* TEXTO */}
         <div>
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            {dict.hero.greeting}{" "}
             <span className="bg-linear-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
               {dict.hero.name}
             </span>{" "}
