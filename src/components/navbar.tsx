@@ -59,7 +59,7 @@ export function Navbar({ locale }: { locale: Locale }) {
           ))}
 
           <LanguageSwitcher currentLocale={locale} />
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
         </div>
 
         {/* Mobile */}
@@ -87,7 +87,7 @@ export function Navbar({ locale }: { locale: Locale }) {
 
               <div className="mt-4 flex items-center gap-4">
                 <LanguageSwitcher currentLocale={locale} />
-                <ThemeToggle />
+                {/* <ThemeToggle /> */}
               </div>
             </nav>
           </SheetContent>

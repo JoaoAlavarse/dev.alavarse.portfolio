@@ -48,7 +48,7 @@
   },
   "cases": {
     "title": "Estudios de caso",
-    "description": "Contexto, rol, decisiones y ejecución en sistemas reales.",
+    "description": "Estudios de caso enfocados en decisión, restricciones, trade-offs y brechas explícitas de evidencia.",
     "competencies": "Competencias demostradas",
     "related": "Casos relacionados"
   },

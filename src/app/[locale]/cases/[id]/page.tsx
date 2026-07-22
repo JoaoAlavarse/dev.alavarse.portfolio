@@ -13,11 +13,46 @@ import {
   sharedOpenGraphImages,
   siteUrl,
 } from "@/lib/seo";
-import type { CaseSection, CaseSectionId, Locale } from "@/interfaces";
+import type {
+  CaseSection,
+  CaseSectionId,
+  EngineeringDecision,
+  Locale,
+} from "@/interfaces";
 
 type Props = {
   params: Promise<{ locale: Locale; id: string }>;
 };
+
+const ADR_LABELS = {
+  pt: {
+    title: "Decisão de Engenharia",
+    problem: "Problema",
+    alternatives: "Alternativas",
+    choice: "Escolha",
+    justification: "Justificativa",
+    tradeoffs: "Trade-offs",
+    consequences: "Consequências",
+  },
+  en: {
+    title: "Engineering Decision",
+    problem: "Problem",
+    alternatives: "Alternatives",
+    choice: "Choice",
+    justification: "Justification",
+    tradeoffs: "Trade-offs",
+    consequences: "Consequences",
+  },
+  es: {
+    title: "Decisión de Ingeniería",
+    problem: "Problema",
+    alternatives: "Alternativas",
+    choice: "Elección",
+    justification: "Justificación",
+    tradeoffs: "Trade-offs",
+    consequences: "Consecuencias",
+  },
+} as const;
 
 export function generateStaticParams() {
   const locales: Locale[] = ["pt", "en", "es"];
@@ -66,9 +101,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function sectionMap(sections: CaseSection[]) {
-  return Object.fromEntries(sections.map((section) => [section.id, section])) as Partial<
-    Record<CaseSectionId, CaseSection>
-  >;
+  return Object.fromEntries(
+    sections.map((section) => [section.id, section]),
+  ) as Partial<Record<CaseSectionId, CaseSection>>;
+}
+
+function isGapItem(item: string) {
+  return /^(lacuna|gap|brecha|informação necessária|required information|información necesaria):/i.test(
+    item.trim(),
+  );
+}
+
+function ContentList({ items }: { items: string[] }) {
+  return (
+    <div className="mt-4 space-y-3">
+      {items.map((item) => (
+        <p
+          key={item}
+          className={
+            isGapItem(item)
+              ? "text-sm italic text-muted-foreground/80 border-l-2 border-yellow-500/40 pl-3"
+              : "text-muted-foreground leading-relaxed"
+          }
+        >
+          {item}
+        </p>
+      ))}
+    </div>
+  );
 }
 
 function ProseBlock({ section }: { section?: CaseSection }) {
@@ -79,12 +139,47 @@ function ProseBlock({ section }: { section?: CaseSection }) {
       <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
         {section.title}
       </h2>
-      <div className="mt-4 space-y-4 text-muted-foreground leading-relaxed">
-        {section.content.map((item) => (
-          <p key={item}>{item}</p>
+      <ContentList items={section.content} />
+    </div>
+  );
+}
+
+function DecisionBlock({
+  decision,
+  locale,
+}: {
+  decision: EngineeringDecision;
+  locale: Locale;
+}) {
+  const labels = ADR_LABELS[locale];
+  const blocks = [
+    { label: labels.problem, items: decision.problem },
+    { label: labels.alternatives, items: decision.alternatives },
+    { label: labels.choice, items: decision.choice },
+    { label: labels.justification, items: decision.justification },
+    { label: labels.tradeoffs, items: decision.tradeoffs },
+    { label: labels.consequences, items: decision.consequences },
+  ];
+
+  return (
+    <article className="rounded-2xl border border-purple-400/20 bg-purple-500/5 p-6 sm:p-8">
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-purple-400">
+        {labels.title}
+      </p>
+      <h3 className="mt-3 text-xl font-bold tracking-tight sm:text-2xl">
+        {decision.title}
+      </h3>
+      <div className="mt-8 grid gap-8 md:grid-cols-2">
+        {blocks.map((block) => (
+          <div key={block.label}>
+            <h4 className="text-sm font-semibold uppercase tracking-wide text-foreground">
+              {block.label}
+            </h4>
+            <ContentList items={block.items} />
+          </div>
         ))}
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -100,10 +195,6 @@ export default async function CaseDetailsPage({ params }: Props) {
     caseStudy.relatedProjects.includes(item.id),
   );
   const byId = sectionMap(caseStudy.sections);
-  const hasFraming = byId.context || byId.problem;
-  const hasConstraints = byId.restrictions || byId.decision;
-  const hasSolution = byId.architecture || byId.execution || byId.challenges;
-  const hasOutcome = byId.result || byId.impact || byId.learnings;
 
   return (
     <main className="container mx-auto px-6 py-24 space-y-24">
@@ -119,7 +210,7 @@ export default async function CaseDetailsPage({ params }: Props) {
             {caseStudy.competency}
           </p>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-            {caseStudy.summary}
+            {caseStudy.objective}
           </p>
           {caseStudy.link && (
             <Link
@@ -152,13 +243,18 @@ export default async function CaseDetailsPage({ params }: Props) {
 
       <div className="grid gap-16 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-20">
         <aside className="space-y-10 lg:sticky lg:top-28 lg:self-start">
-          {caseStudy.role &&
-            !/não publicada|not published|no publicada/i.test(caseStudy.role) && (
+          {byId.role && (
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                {dict.project.myActions}
+                {byId.role.title}
               </p>
-              <p className="mt-3 text-sm leading-relaxed">{caseStudy.role}</p>
+              <div className="mt-3 space-y-2">
+                {byId.role.content.map((item) => (
+                  <p key={item} className="text-sm leading-relaxed">
+                    {item}
+                  </p>
+                ))}
+              </div>
             </div>
           )}
 
@@ -180,39 +276,25 @@ export default async function CaseDetailsPage({ params }: Props) {
             </div>
           )}
 
-          {caseStudy.technologies.length > 0 && (
+          {byId.technologies && (
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                {dict.project.technologies}
+                {byId.technologies.title}
               </p>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {caseStudy.technologies.map((technology) => (
-                  <li
-                    key={technology}
-                    className="rounded-full border border-purple-400/20 bg-purple-500/10 px-3 py-1 text-xs text-purple-400"
-                  >
-                    {technology}
-                  </li>
-                ))}
-              </ul>
+              <ContentList items={byId.technologies.content} />
             </div>
           )}
         </aside>
 
         <div className="space-y-20">
-          {hasFraming && (
-            <section className="grid gap-12 md:grid-cols-2">
-              <ProseBlock section={byId.context} />
-              <ProseBlock section={byId.problem} />
-            </section>
-          )}
+          <ProseBlock section={byId.executiveSummary} />
 
-          {hasConstraints && (
-            <section className="grid gap-12 border-y border-white/10 py-16 md:grid-cols-2">
-              <ProseBlock section={byId.restrictions} />
-              <ProseBlock section={byId.decision} />
-            </section>
-          )}
+          <section className="grid gap-12 md:grid-cols-2">
+            <ProseBlock section={byId.context} />
+            <ProseBlock section={byId.problem} />
+          </section>
+
+          <ProseBlock section={byId.restrictions} />
 
           {byId.responsibilities && (
             <section>
@@ -232,44 +314,61 @@ export default async function CaseDetailsPage({ params }: Props) {
             </section>
           )}
 
-          {hasSolution && (
-            <section className="space-y-12">
-              {(byId.architecture || byId.execution) && (
-                <div className="grid gap-12 md:grid-cols-2">
-                  <ProseBlock section={byId.architecture} />
-                  <ProseBlock section={byId.execution} />
-                </div>
-              )}
+          <section className="grid gap-12 border-y border-white/10 py-16 md:grid-cols-2">
+            <ProseBlock section={byId.stakeholders} />
+            <ProseBlock section={byId.successCriteria} />
+          </section>
 
+          <section className="space-y-10">
+            <ProseBlock section={byId.alternatives} />
+            <ProseBlock section={byId.decision} />
+          </section>
+
+          {caseStudy.decisions.length > 0 && (
+            <section className="space-y-8">
+              {caseStudy.decisions.map((decision) => (
+                <DecisionBlock
+                  key={decision.title}
+                  decision={decision}
+                  locale={locale}
+                />
+              ))}
+            </section>
+          )}
+
+          <section className="grid gap-12 md:grid-cols-2">
+            <ProseBlock section={byId.architecture} />
+            <ProseBlock section={byId.flow} />
+          </section>
+
+          <ProseBlock section={byId.tradeoffs} />
+
+          <section className="grid gap-12 md:grid-cols-2">
+            <ProseBlock section={byId.execution} />
+            <div>
               {byId.challenges && (
                 <div className="border-l-2 border-purple-400/40 pl-6">
                   <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
                     {byId.challenges.title}
                   </h2>
-                  <ul className="mt-6 space-y-3">
-                    {byId.challenges.content.map((item) => (
-                      <li
-                        key={item}
-                        className="text-muted-foreground leading-relaxed"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                  <ContentList items={byId.challenges.content} />
                 </div>
               )}
-            </section>
-          )}
+            </div>
+          </section>
 
-          {hasOutcome && (
-            <section className="space-y-12 rounded-2xl border border-white/10 bg-linear-to-br from-purple-500/5 via-transparent to-blue-500/5 p-8 sm:p-10">
-              <div className="grid gap-12 md:grid-cols-2">
-                <ProseBlock section={byId.result} />
-                <ProseBlock section={byId.impact} />
-              </div>
-              <ProseBlock section={byId.learnings} />
-            </section>
-          )}
+          <section className="space-y-12 rounded-2xl border border-white/10 bg-linear-to-br from-purple-500/5 via-transparent to-blue-500/5 p-8 sm:p-10">
+            <div className="grid gap-12 md:grid-cols-2">
+              <ProseBlock section={byId.result} />
+              <ProseBlock section={byId.impact} />
+            </div>
+            <ProseBlock section={byId.limitations} />
+          </section>
+
+          <section className="grid gap-12 md:grid-cols-2">
+            <ProseBlock section={byId.learnings} />
+            <ProseBlock section={byId.principles} />
+          </section>
         </div>
       </div>
 

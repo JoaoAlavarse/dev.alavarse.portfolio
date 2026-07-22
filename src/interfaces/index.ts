@@ -16,23 +16,43 @@ export interface IProject {
 }
 
 export type CaseSectionId =
+  | "executiveSummary"
   | "context"
   | "problem"
   | "restrictions"
+  | "role"
   | "responsibilities"
+  | "stakeholders"
+  | "successCriteria"
+  | "alternatives"
   | "decision"
   | "architecture"
+  | "flow"
+  | "technologies"
+  | "tradeoffs"
   | "execution"
   | "challenges"
   | "result"
   | "impact"
-  | "learnings";
+  | "limitations"
+  | "learnings"
+  | "principles";
 
 export interface CaseSection {
   id: CaseSectionId;
   title: string;
   status: "available" | "partial" | "missing";
   content: string[];
+}
+
+export interface EngineeringDecision {
+  title: string;
+  problem: string[];
+  alternatives: string[];
+  choice: string[];
+  justification: string[];
+  tradeoffs: string[];
+  consequences: string[];
 }
 
 export interface ICase {
@@ -49,6 +69,7 @@ export interface ICase {
   technologies: string[];
   relatedProjects: string[];
   sections: CaseSection[];
+  decisions: EngineeringDecision[];
 }
 
 export interface TimelineItem {
