@@ -16,9 +16,10 @@ export function Navbar({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const navItems = [
     { label: dict.navbar.home, href: `/${locale}` },
-    { label: dict.navbar.projects, href: `/${locale}/projetos` },
+    { label: dict.navbar.experience, href: `/${locale}/experiencia` },
+    { label: dict.navbar.projects, href: `/${locale}/cases` },
     { label: dict.navbar.about, href: `/${locale}/sobre` },
-    { label: dict.navbar.contact, href: `/${locale}#contato` },
+    { label: dict.navbar.contact, href: `/${locale}/contato` },
   ];
 
   return (

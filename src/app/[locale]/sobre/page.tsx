@@ -1,16 +1,14 @@
 import Image from "next/image";
 import { Check } from "lucide-react";
 import Contact from "@/components/home/contact";
-import academicExperiencePt from "@/data/academic-experience-pt.json";
-import academicExperienceEn from "@/data/academic-experience-en.json";
-import academicExperienceEs from "@/data/academic-experience-es.json";
-import professionalExperiencePt from "@/data/professional-experience-pt.json";
-import professionalExperienceEn from "@/data/professional-experience-en.json";
-import professionalExperienceEs from "@/data/professional-experience-es.json";
-import { TimelineItem, type Locale } from "@/interfaces";
+import { type Locale } from "@/interfaces";
 import { Metadata } from "next";
-import ClientTimeline from "@/components/client-timeline";
 import { getDictionary } from "@/lib/get-dictionary";
+import {
+  languageAlternates,
+  metadataBase,
+  sharedOpenGraphImages,
+} from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -72,15 +70,11 @@ export async function generateMetadata({
   return {
     title: data.title,
     description: data.description,
+    metadataBase,
     keywords: data.keywords,
     alternates: {
       canonical: `/${locale}/sobre`,
-      languages: {
-        pt: "/pt/sobre",
-        en: "/en/sobre",
-        es: "/es/sobre",
-        "x-default": "/en/sobre",
-      },
+      languages: languageAlternates("/sobre"),
     },
     openGraph: {
       title: data.title,
@@ -89,11 +83,13 @@ export async function generateMetadata({
       siteName: "AlavarseDev",
       locale: data.locale,
       type: "profile",
+      images: sharedOpenGraphImages,
     },
     twitter: {
       card: "summary_large_image",
       title: data.title,
       description: data.description,
+      images: sharedOpenGraphImages.map((image) => image.url),
     },
   };
 }
@@ -105,8 +101,6 @@ export default async function AboutPage({
 }) {
   const { locale } = await params;
   const dict = getDictionary(locale);
-  const academicExperience = locale === "en" ? academicExperienceEn : locale === "es" ? academicExperienceEs : academicExperiencePt;
-  const professionalExperience = locale === "en" ? professionalExperienceEn : locale === "es" ? professionalExperienceEs : professionalExperiencePt;
 
   return (
     <main className="container mx-auto px-6 py-24 space-y-32">
@@ -186,36 +180,6 @@ export default async function AboutPage({
             <li key={item} className="flex items-center gap-3">
               <Check className="h-5 w-5 text-purple-400" />
               <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* EXPERIÊNCIA PROFISSIONAL */}
-      <section>
-        <h2 className="text-3xl font-bold">{dict.about.professionalExperience.title}</h2>
-
-        <ClientTimeline items={professionalExperience as TimelineItem[]} currentLabel={dict.timeline.current} />
-      </section>
-
-      {/* FORMAÇÃO */}
-      <section>
-        <h2 className="text-3xl font-bold">{dict.about.academicExperience.title}</h2>
-
-        <ClientTimeline items={academicExperience as TimelineItem[]} currentLabel={dict.timeline.current} />
-      </section>
-
-      {/* TECNOLOGIAS */}
-      <section>
-        <h2 className="text-3xl font-bold">{dict.about.technologies.title}</h2>
-
-        <ul className="mt-6 flex flex-wrap gap-3 text-sm">
-          {dict.about.technologies.list.map((tech) => (
-            <li
-              key={tech}
-              className="rounded-full border px-4 py-1 text-muted-foreground hover:border-purple-400/50 transition"
-            >
-              {tech}
             </li>
           ))}
         </ul>

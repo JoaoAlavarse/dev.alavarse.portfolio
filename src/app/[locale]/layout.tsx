@@ -6,6 +6,14 @@ import { Footer } from "@/components/footer";
 import { Analytics } from "@vercel/analytics/next";
 import type { Locale } from "@/interfaces";
 import { getDictionary } from "@/lib/get-dictionary";
+import {
+  homeSeo,
+  languageAlternates,
+  localeConfig,
+  metadataBase,
+  sharedOpenGraphImages,
+  siteUrl,
+} from "@/lib/seo";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -24,91 +32,32 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const currentLocale = locale as Locale;
-
-  const seo = {
-    pt: {
-      title: "AlavarseDev | Desenvolvedor Full Stack",
-      description:
-        "João Alavarse, desenvolvedor Full Stack especializado em React, Next.js, Java e Spring Boot para produtos digitais performaticos.",
-      locale: "pt_BR",
-      keywords: [
-        "desenvolvedor full stack",
-        "desenvolvedor react",
-        "desenvolvedor java",
-        "spring boot",
-        "next.js",
-        "tailwind css",
-        "portfólio desenvolvedor",
-        "desenvolvedor react native",
-        "João Alavarse",
-        "João Paulo Almeida Alavarse",
-      ],
-    },
-    en: {
-      title: "AlavarseDev | Full Stack Developer",
-      description:
-        "João Alavarse, Full Stack developer specialized in React, Next.js, Java, and Spring Boot for scalable digital products.",
-      locale: "en_US",
-      keywords: [
-        "full stack developer",
-        "react developer",
-        "java developer",
-        "spring boot",
-        "next.js",
-        "tailwind css",
-        "Developer Portfolio",
-        "react native developer",
-        "João Alavarse",
-        "João Paulo Almeida Alavarse",
-        "software engineer",
-        "frontend developer",
-        "backend developer",
-      ],
-    },
-    es: {
-      title: "AlavarseDev | Desarrollador Full Stack",
-      description:
-        "João Alavarse, desarrollador Full Stack especializado en React, Next.js, Java y Spring Boot para productos digitales escalables.",
-      locale: "es_ES",
-      keywords: [
-        "desarrollador Full Stack",
-        "desarrollador react",
-        "desarrollador java",
-        "spring boot",
-        "next.js",
-        "tailwind css",
-        "portafolio de desarrollador",
-        "desarrollador react native",
-        "João Alavarse",
-        "João Paulo Almeida Alavarse",
-      ],
-    },
-  };
-
-  // Fallback para 'en' caso a locale venha inesperada
-  const data = seo[currentLocale] || seo.en;
+  const data = homeSeo[currentLocale] || homeSeo.en;
+  const localeData = localeConfig[currentLocale] || localeConfig.en;
 
   return {
     title: data.title,
     description: data.description,
-    metadataBase: new URL("https://alavarsedev.com.br"),
+    metadataBase,
     alternates: {
       canonical: `/${locale}`,
-      languages: { pt: "/pt", en: "/en", es: "/es", "x-default": "/en" },
+      languages: languageAlternates(),
     },
     openGraph: {
       title: data.title,
       description: data.description,
       url: `/${locale}`,
       siteName: "AlavarseDev",
-      locale: data.locale,
+      locale: localeData.ogLocale,
       type: "website",
+      images: sharedOpenGraphImages,
     },
 
     twitter: {
       card: "summary_large_image",
       title: data.title,
       description: data.description,
+      images: sharedOpenGraphImages.map((image) => image.url),
     },
 
     robots: {
@@ -185,22 +134,27 @@ export default async function RootLayout({ children, params }: LayoutProps) {
               "@context": "https://schema.org",
               name: "João Alavarse",
               alternateName: "João Paulo Almeida Alavarse",
-              url: "https://alavarsedev.com.br",
-              jobTitle: "Full Stack Developer",
-              description:
-                "Full Stack developer specialized in React, Next.js, Java and Spring Boot",
-              image: "https://alavarsedev.com.br/web-app-manifest-512x512.png",
+              url: siteUrl,
+              jobTitle: "Full Stack Software Engineer",
+              description: homeSeo.en.description,
+              image: `${siteUrl}/web-app-manifest-512x512.png`,
               sameAs: [
                 "https://github.com/JoaoAlavarse",
                 "https://www.linkedin.com/in/joao-alavarse/",
               ],
               knowsAbout: [
+                "Software Engineering",
+                "Software Architecture",
+                "Product Engineering",
+                "ERP",
                 "React",
                 "Next.js",
                 "Java",
                 "Spring Boot",
                 "React Native",
                 "TypeScript",
+                ".NET",
+                "Technical Communication",
               ],
               alumniOf: {
                 "@type": "Organization",
@@ -216,7 +170,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "AlavarseDev",
-              url: "https://alavarsedev.com.br",
+              url: siteUrl,
               inLanguage: ["pt-BR", "en-US", "es-ES"],
               author: {
                 "@type": "Person",

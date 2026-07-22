@@ -35,7 +35,7 @@ export default async function ProjectsList({
 
       <div className="mt-10">
         <Button asChild variant="secondary">
-          <Link href={`/${locale}/projetos`}>{dict.projects.viewAll}</Link>
+          <Link href={`/${locale}/cases`}>{dict.projects.viewAll}</Link>
         </Button>
       </div>
     </section>

@@ -32,11 +32,11 @@ export async function Hero({ params }: { params: Promise<{ locale: Locale }> }) 
             </Button>
 
             <Button asChild size="lg" variant="secondary">
-              <Link href={`/${locale}/projetos`}>{dict.projects.viewAll}</Link>
+              <Link href={`/${locale}/cases`}>{dict.projects.viewAll}</Link>
             </Button>
 
             <Button asChild size="lg" variant="outline">
-              <Link href="#contato">{dict.hero.actions.contact}</Link>
+              <Link href={`/${locale}/contato`}>{dict.hero.actions.contact}</Link>
             </Button>
           </div>
         </div>
@@ -53,7 +53,7 @@ export async function Hero({ params }: { params: Promise<{ locale: Locale }> }) 
               alt={dict.hero.imageAlt}
               width={360}
               height={450}
-              className="rounded-xl object-cover grayscale hover:grayscale-0 transition duration-300"
+              className="rounded-xl object-cover transition duration-300"
               priority
             />
           </div>

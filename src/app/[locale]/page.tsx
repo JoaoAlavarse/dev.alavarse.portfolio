@@ -1,9 +1,8 @@
 import Contact from "@/components/home/contact";
 import { Hero } from "@/components/home/hero";
-import Services from "@/components/home/services";
 import Stats from "@/components/home/stats";
+import ExperiencePreview from "@/components/home/experience-preview";
 import ProjectsList from "@/components/home/projects";
-import FAQ from "@/components/home/faq";
 import type { Locale } from "@/interfaces";
 
 export default function Home({
@@ -19,13 +18,11 @@ export default function Home({
 
       <Hero params={params}/>
 
-      <Services params={params}/>
-
       <Stats params={params}/>
 
-      <ProjectsList params={params}/>
+      <ExperiencePreview params={params}/>
 
-      <FAQ params={params}/>
+      <ProjectsList params={params}/>
 
       <Contact params={params}/>
     </main>

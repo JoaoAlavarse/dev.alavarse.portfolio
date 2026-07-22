@@ -22,11 +22,17 @@ export function Footer({ locale }: { locale: Locale }) {
           <Link href={`/${locale}`} className="hover:text-foreground transition">
             {dict.navbar.home}
           </Link>
-          <Link href={`/${locale}/projetos`} className="hover:text-foreground transition">
+          <Link href={`/${locale}/experiencia`} className="hover:text-foreground transition">
+            {dict.navbar.experience}
+          </Link>
+          <Link href={`/${locale}/cases`} className="hover:text-foreground transition">
             {dict.navbar.projects}
           </Link>
           <Link href={`/${locale}/sobre`} className="hover:text-foreground transition">
             {dict.navbar.about}
+          </Link>
+          <Link href={`/${locale}/contato`} className="hover:text-foreground transition">
+            {dict.navbar.contact}
           </Link>
         </nav>
 

@@ -4,7 +4,8 @@
   },
   "navbar": {
     "home": "Início",
-    "projects": "Projetos",
+    "projects": "Cases",
+    "experience": "Experiência",
     "about": "Sobre",
     "contact": "Contato",
     "openMenu": "Abrir menu de navegação"
@@ -14,7 +15,7 @@
     "items": [
       { "value": "5+", "label": "Projetos entregues" },
       { "value": "3+", "label": "Anos de experiência" },
-      { "value": "12+", "label": "Tecnologias dominadas" },
+      { "value": "12+", "label": "Tecnologias utilizadas" },
       { "value": "6", "label": "Repositórios em um único projeto" }
     ]
   },
@@ -41,9 +42,22 @@
     ]
   },
   "projects": {
-    "title": "Projetos",
-    "description": "Alguns dos projetos que desenvolvi ao longo da minha trajetória profissional.",
-    "viewAll": "Veja todos os projetos"
+    "title": "Cases",
+    "description": "Estudos de caso organizados para demonstrar decisões, responsabilidades e evidências de engenharia.",
+    "viewAll": "Ver cases"
+  },
+  "cases": {
+    "title": "Estudos de caso",
+    "description": "Contexto, papel, decisões e execução em sistemas reais.",
+    "competencies": "Competências demonstradas",
+    "related": "Cases relacionados"
+  },
+  "experience": {
+    "title": "Experiência",
+    "description": "Evolução profissional conectando sistemas reais, ensino, produto e responsabilidade técnica.",
+    "professional": "Experiência profissional",
+    "academic": "Formação e ensino",
+    "relatedCases": "Cases relacionados"
   },
   "project": {
     "visit": "Visitar projeto",
@@ -57,7 +71,7 @@
     "title": "Sobre mim",
     "hero": {
       "paragraph1": "João Paulo Almeida Alavarse é um desenvolvedor fullstack, apaixonado por tecnologia, arquitetura de software e por transformar ideias em produtos reais, escaláveis e bem construídos.",
-      "paragraph2": "Ao desenvolver um software, sempre penso no cliente e no que poderia ajudar ele, as vezes pode ser algo simples, ou até mesmo \"chato\" de se programar, mas são esses pequenos detalhes que facilitam a vida do usuário e que mantém o cliente com o produto"
+      "paragraph2": "Ao desenvolver software, sempre penso no cliente e no que poderia ajudá-lo. Às vezes pode ser algo simples, ou até mesmo \"chato\" de programar, mas são esses pequenos detalhes que facilitam a vida do usuário e mantêm o cliente no produto."
     },
     "story": {
       "title": "Minha história",
@@ -114,12 +128,12 @@
   },
   "contact": {
     "title": "Vamos conversar?",
-    "description": "Se você tem uma ideia ou precisa de alguém para tirar seu projeto do papel, posso te ajudar do planejamento ao deploy.",
+    "description": "Canal para oportunidades profissionais, conversas técnicas, colaboração em produto, ensino e inovação.",
     "benefits": [
-      "Arquitetura e boas práticas",
-      "Frontend e backend completos",
-      "APIs performáticas e seguras",
-      "Comunicação clara e rápida"
+      "Oportunidades em engenharia de software",
+      "Conversas com lideranças técnicas",
+      "Colaboração em produto e inovação",
+      "Comunicação técnica e ensino"
     ],
     "actions": {
       "email": "Enviar e-mail",
@@ -143,7 +157,7 @@
   },
   "hero": {
     "name": "João Paulo Almeida Alavarse",
-    "description": "Desenvolvedor Full Stack, fundador de startup e professor universitário. Construo produtos digitais do zero ao deploy — de e-commerces completos a plataformas de saúde — com React, React Native, Java e Spring Boot.",
+    "description": "Engenheiro de software Full Stack com atuação em sistemas reais, arquitetura, produto, inovação e ensino. Trabalho conectando execução técnica, tomada de decisão e comunicação em produtos web, mobile, backend e ERP.",
     "actions": {
       "about": "Me conheça",
       "contact": "Entrar em contato"

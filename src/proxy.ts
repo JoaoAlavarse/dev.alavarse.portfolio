@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server"
-import type { NextRequest } from "next/server"
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-const locales = ["pt", "en", "es"]
-const defaultLocale = "pt"
+const locales = ["pt", "en", "es"];
+const defaultLocale = "pt";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Ignore assets e arquivos estáticos

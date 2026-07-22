@@ -4,7 +4,8 @@
   },
   "navbar": {
     "home": "Inicio",
-    "projects": "Proyectos",
+    "projects": "Casos",
+    "experience": "Experiencia",
     "about": "Sobre mí",
     "contact": "Contacto",
     "openMenu": "Abrir menú de navegación"
@@ -41,9 +42,22 @@
     ]
   },
   "projects": {
-    "title": "Proyectos",
-    "description": "Algunos de los proyectos que he desarrollado a lo largo de mi trayectoria profesional.",
-    "viewAll": "Ver todos los proyectos"
+    "title": "Casos",
+    "description": "Estudios de caso estructurados para demostrar decisiones, responsabilidades y evidencias de ingeniería.",
+    "viewAll": "Ver casos"
+  },
+  "cases": {
+    "title": "Estudios de caso",
+    "description": "Contexto, rol, decisiones y ejecución en sistemas reales.",
+    "competencies": "Competencias demostradas",
+    "related": "Casos relacionados"
+  },
+  "experience": {
+    "title": "Experiencia",
+    "description": "Evolución profesional conectando sistemas reales, enseñanza, producto y responsabilidad técnica.",
+    "professional": "Experiencia profesional",
+    "academic": "Formación y enseñanza",
+    "relatedCases": "Casos relacionados"
   },
   "project": {
     "visit": "Visitar proyecto",
@@ -114,12 +128,12 @@
   },
   "contact": {
     "title": "¿Hablamos?",
-    "description": "Si tienes una idea o necesitas a alguien para convertir tu proyecto en realidad, puedo ayudarte desde la planificación hasta el despliegue.",
+    "description": "Canal para oportunidades profesionales, conversaciones técnicas, colaboración en producto, enseñanza e innovación.",
     "benefits": [
-      "Arquitectura y buenas prácticas",
-      "Frontend y backend completos",
-      "APIs rápidas y seguras",
-      "Comunicación clara y rápida"
+      "Oportunidades en ingeniería de software",
+      "Conversaciones con líderes técnicos",
+      "Colaboración en producto e innovación",
+      "Comunicación técnica y enseñanza"
     ],
     "actions": {
       "email": "Enviar correo",
@@ -143,7 +157,7 @@
   },
   "hero": {
     "name": "João Paulo Almeida Alavarse",
-    "description": "Desarrollador Full Stack, fundador de startup y profesor universitario. Construyo productos digitales de cero al deploy — desde e-commerces completos hasta plataformas de salud — con React, React Native, Java y Spring Boot.",
+    "description": "Ingeniero de software Full Stack con actuación en sistemas reales, arquitectura, producto, innovación y enseñanza. Trabajo conectando ejecución técnica, toma de decisiones y comunicación en productos web, mobile, backend y ERP.",
     "actions": {
       "about": "Conóceme",
       "contact": "Ponerse en contacto"

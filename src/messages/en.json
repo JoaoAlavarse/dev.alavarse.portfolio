@@ -4,7 +4,8 @@
   },
   "navbar": {
     "home": "Home",
-    "projects": "Projects",
+    "projects": "Cases",
+    "experience": "Experience",
     "about": "About",
     "contact": "Contact",
     "openMenu": "Open navigation menu"
@@ -41,9 +42,22 @@
     ]
   },
   "projects": {
-    "title": "Projects",
-    "description": "Some of the projects I have developed throughout my professional journey.",
-    "viewAll": "View all projects"
+    "title": "Cases",
+    "description": "Case studies structured to demonstrate decisions, responsibilities, and software engineering evidence.",
+    "viewAll": "View cases"
+  },
+  "cases": {
+    "title": "Case studies",
+    "description": "Context, role, decisions, and execution in real systems.",
+    "competencies": "Demonstrated competencies",
+    "related": "Related cases"
+  },
+  "experience": {
+    "title": "Experience",
+    "description": "Professional evolution connecting real systems, teaching, product, and technical responsibility.",
+    "professional": "Professional experience",
+    "academic": "Education and teaching",
+    "relatedCases": "Related cases"
   },
   "project": {
     "visit": "Visit project",
@@ -114,12 +128,12 @@
   },
   "contact": {
     "title": "Let's talk?",
-    "description": "If you have an idea or need someone to turn your project into reality, I can help you from planning to deployment.",
+    "description": "A channel for professional opportunities, technical conversations, product collaboration, teaching, and innovation.",
     "benefits": [
-      "Architecture and best practices",
-      "Complete frontend and backend",
-      "High-performance and secure APIs",
-      "Clear and fast communication"
+      "Software engineering opportunities",
+      "Conversations with technical leaders",
+      "Product and innovation collaboration",
+      "Technical communication and teaching"
     ],
     "actions": {
       "email": "Send email",
@@ -143,7 +157,7 @@
   },
   "hero": {
     "name": "João Paulo Almeida Alavarse",
-    "description": "Full Stack Developer, startup founder, and university professor. I build digital products from zero to deploy — from complete e-commerce platforms to healthcare apps — with React, React Native, Java, and Spring Boot.",
+    "description": "Full Stack Software Engineer working with real systems, architecture, product, innovation, and teaching. I connect technical execution, decision-making, and communication across web, mobile, backend, and ERP products.",
     "actions": {
       "about": "Get to know me",
       "contact": "Contact me"

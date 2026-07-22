@@ -5,9 +5,9 @@
     "whatIs": "Aplicação para o incentivo a doação de sangue",
     "smallDescription": "O HemoUp é uma plataforma que deixa o processo de doação de sangue mais fácil, divertido e organizado!",
     "technologies": [
-      "Typescript",
+      "TypeScript",
       "React Native",
-      "NextJS",
+      "Next.js",
       "Java",
       "Spring Boot",
       "TailwindCSS"
@@ -20,11 +20,11 @@
       "Fundador",
       "Desenvolvimento Mobile",
       "Desenvolvimento Back End",
-      "Analise de Requisitos",
+      "Análise de Requisitos",
       "Marketing",
-      "Analise de Mercado",
+      "Análise de Mercado",
       "Projeção de projeto",
-      "Projeção de custos e faturamentos"
+      "Projeção de custos e faturamento"
     ],
     "description": "O HemoUp surgiu após uma experiência própria onde fui realizar uma doação de sangue e percebi as dificuldades do processo. \n\n Após isso, com diversas conversas com a equipe do Hemocentro da minha cidade, foi decidido como seria feita a aplicação para resolver essas situações, em conjunto, a prefeitura da cidade estava lançando projetos de Pré-Incubação / Incubação para fomentar a inovação na criação de startups na cidade, e o HemoUp foi selecionado em 1° lugar no edital! \n\n Foram propostas diversas mentorias sobre marketing, gestão, captação de recursos, jurídico e etc. Com isso, o projeto possui uma base muito sólida e terá seu desenvolvimento iniciado no ano de 2026!"
   },
@@ -34,9 +34,9 @@
     "whatIs": "E-commerce e catálogo digital integrado com WhatsApp",
     "smallDescription": "O Zshop é o catálogo virtual perfeito para quem quer gerenciar vendas com praticidade e atender clientes com agilidade.",
     "technologies": [
-      "Typescript",
+      "TypeScript",
       "React",
-      "NextJS",
+      "Next.js",
       "NestJS",
       "Fastify",
       "TailwindCSS"
@@ -49,7 +49,7 @@
       "Desenvolvimento Full Stack",
       "Desenvolvimento Mobile",
       "Orquestração Docker",
-      "Analise de Requisitos",
+      "Análise de Requisitos",
       "CI/CD"
     ],
     "description": "Zshop é uma plataforma digital para gerar vendas integradas com o WhatsApp. Atuei em todos os 6 repositórios que o projeto possuía, sendo eles: API, Front Administrativo, Front Catálogo, APP Mobile, Integração com WhatsAPP e um Orquestrador que subia instâncias Docker para essas integrações \n\n "
@@ -60,7 +60,7 @@
     "whatIs": "Demonstrativo de lentes para óticas",
     "smallDescription": "Já pensou em como modernizar sua ótica e demonstrar os diferentes tipos de distorções, tratamentos, refrações e cores das lentes na hora da venda? O Pupilens é para você.",
     "technologies": [
-      "Typescript",
+      "TypeScript",
       "React Native",
       "C#",
       ".NET"
@@ -68,7 +68,7 @@
     "link": "https://www.pupilens.com.br/",
     "logo": "/assets/pupilens-logo.webp",
     "highlights": ["Performance mobile avançada", "Manipulação complexa de SVGs"],
-    "role": " Desenvolvedor Mobile",
+    "role": "Desenvolvedor Mobile",
     "responsibilities": [
       "Desenvolvimento Mobile",
       "Suporte"
@@ -81,7 +81,7 @@
     "whatIs": "ERP completo para óticas",
     "smallDescription": "Seguro e simples para controlar vendas, emitir notas fiscais, gerenciar estoque e muito mais. Conheça o sistema que agiliza as atividades da ótica e aumenta os resultados.",
     "technologies": [
-      "Typescript",
+      "TypeScript",
       "VueJS",
       "C#",
       ".NET"
@@ -89,7 +89,7 @@
     "link": "https://kerootica.com.br/",
     "logo": "/assets/kerootica-logo.webp",
     "highlights": ["ERP especializado para óticas"],
-    "role": "Fundador e Desenvolvedor Full Stack",
+    "role": "Engenheiro de Software Full Stack",
     "responsibilities": [
       "Desenvolvimento Full Stack"
     ],
@@ -101,7 +101,7 @@
     "whatIs": "E-commerce integrado com métodos de pagamento e frete",
     "smallDescription": "Este foi meu primeiro projeto de grande porte, sendo ele o projeto desenvolvido para o TCC da minha graduação.",
     "technologies": [
-      "Typescript",
+      "TypeScript",
       "React",
       "Bootstrap",
       "Java",
@@ -114,8 +114,8 @@
     "responsibilities": [
       "Fundador",
       "Desenvolvimento Full Stack",
-      "Analise de Requisitos"
+      "Análise de Requisitos"
     ],
-    "description": "Podemos dizer que foi meu primeiro grande projeto! Aqui foi onde minha paizão pelo desenvolvimento realmente se aprofundou! \n\n Em 6 meses, aprendi sobre desenvolvimento de APIs em Java com Spring Boot, fiz regras de negócio complexas, como vendas, entregas, pagamentos, calculo de peso e dimensão de produtos para frete. Integrei com APIs para o calculo de frete e também para a geração de pagamentos com Boleto, Pix e Cartão de Crédito. Também, não posso deixar de lado a parte de documentação, criei diversos diagramas, dicionário de dados, detalhamento de requisitos e etc. \n\n Enfim, tudo o que se espera de um bom e completo software \n\n Tenho orgulho em dizer que obtive nota máxima pela implementação desse projeto"
+    "description": "Este foi meu primeiro grande projeto e marcou meu aprofundamento em desenvolvimento de software.\n\nEm 6 meses, aprendi sobre desenvolvimento de APIs em Java com Spring Boot, implementei regras de negócio como vendas, entregas, pagamentos e cálculo de peso e dimensão de produtos para frete. Integrei APIs para cálculo de frete e geração de pagamentos com Boleto, Pix e Cartão de Crédito. Também produzi documentação, incluindo diagramas, dicionário de dados e detalhamento de requisitos.\n\nTenho orgulho em dizer que obtive nota máxima pela implementação desse projeto."
   }
 ]

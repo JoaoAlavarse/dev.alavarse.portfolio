@@ -38,7 +38,7 @@ export default function ProjectCard({ project, locale }: { project: IProject; lo
 
       <div className="flex justify-between items-center">
         <Link
-          href={`/${locale}/projetos/${project.id}`}
+          href={`/${locale}/cases/${project.id}`}
           className="mt-4 inline-block text-sm font-medium hover:underline"
         >
           {dict.project.seeDetails}

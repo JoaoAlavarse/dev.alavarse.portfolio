@@ -41,7 +41,7 @@ export default function Image() {
             color: "#94a3b8",
           }}
         >
-          Full Stack Developer | Startup Founder | Professor
+          Full Stack Software Engineer | Architecture | Product | Teaching
         </div>
         <div
           style={{
