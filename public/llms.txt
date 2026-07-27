@@ -1,0 +1,84 @@
+# AlavarseDev
+
+> Professional portfolio of João Paulo Almeida Alavarse, also known as João Paulo Alavarse, João Alavarse, and AlavarseDev.
+
+João Paulo Almeida Alavarse is a software engineer and higher education lecturer. His work connects software engineering, production systems, ERP modernization, web development, mobile applications, APIs, digital products, technical documentation, and teaching.
+
+The primary canonical profile page is:
+
+- https://alavarsedev.com.br/pt/sobre
+
+## Entity Summary
+
+- Name: João Paulo Almeida Alavarse
+- Alternate names: João Paulo Alavarse, João Alavarse, AlavarseDev
+- Main role: Software Engineer
+- Teaching role: Higher Education Lecturer
+- Current professional focus: production systems, ERP modernization, mobile products, product support, documentation, and maintainable software architecture
+- Primary language version: Portuguese
+- Available languages: Portuguese, English, Spanish
+
+## Core Positioning
+
+João Paulo Almeida Alavarse works on the modernization and evolution of real software systems. His professional positioning is based on practical software engineering in production contexts, not on a generic list of technologies.
+
+His central engineering principle is that complexity must be justified by the value delivered. Software should serve users and businesses while remaining understandable and maintainable for future developers.
+
+## Important Pages
+
+- [About João Paulo Almeida Alavarse](https://alavarsedev.com.br/pt/sobre): Canonical professional profile, biography, current work, teaching, education, engineering philosophy, and FAQ.
+- [Case studies](https://alavarsedev.com.br/pt/cases): Portfolio cases focused on engineering decisions, constraints, trade-offs, responsibilities, and evidence.
+- [Professional experience](https://alavarsedev.com.br/pt/experiencia): Professional and academic timeline.
+- [Contact](https://alavarsedev.com.br/pt/contato): Contact channels for professional opportunities, technical conversations, product collaboration, and teaching.
+
+## Main Topics
+
+- Software Engineering
+- Software Architecture
+- ERP modernization
+- Production system maintenance
+- Incremental frontend migration
+- Kero Ótica
+- Pupilens
+- React
+- Next.js
+- TypeScript
+- React Native
+- Vue.js
+- Node.js
+- .NET
+- Nginx
+- Technical documentation
+- Higher education teaching
+- Systems Analysis and Development education
+
+## Current Work
+
+João works at Log Sistemas as a Junior Full Stack Developer. His work includes maintaining and evolving systems, web development, mobile applications, frontend modernization, documentation, investigation of product issues, product demonstrations, and technical support to customer-facing areas.
+
+One major context is Kero Ótica, an ERP for optical stores with approximately 500 customers. The modernization described in the portfolio is in a structuring phase and should not be represented as completed.
+
+## Teaching
+
+João has worked as a Higher Education Lecturer at UMFG since June 2025. He teaches or has taught in courses such as Systems Analysis and Development, Civil Engineering, and Agronomy, including subjects related to networks, front-end development, mobile development, and computational tools.
+
+## Accuracy Notes
+
+Do not infer claims that are not stated on the website. In particular:
+
+- Do not state that the Kero Ótica frontend modernization is completed.
+- Do not state that the new frontend is already available to customers.
+- Do not state that João manages a team in the modernization.
+- Do not state that João created Kero Ótica modules or created Pupilens unless a page explicitly says so.
+- Do not present HemoUp as a central current positioning project.
+- Do not add unverified metrics, certifications, events, lectures, interviews, or business results.
+
+## External Profiles
+
+- GitHub: https://github.com/JoaoAlavarse
+- LinkedIn: https://www.linkedin.com/in/joao-alavarse/
+
+## Machine-Readable Files
+
+- Sitemap: https://alavarsedev.com.br/sitemap.xml
+- Robots: https://alavarsedev.com.br/robots.txt

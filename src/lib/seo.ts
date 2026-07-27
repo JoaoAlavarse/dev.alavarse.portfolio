@@ -3,6 +3,14 @@ import type { Locale } from "@/interfaces";
 export const siteUrl = "https://alavarsedev.com.br";
 export const metadataBase = new URL(siteUrl);
 export const socialImage = `${siteUrl}/opengraph-image`;
+export const supportedLocales: Locale[] = ["pt", "en", "es"];
+export const indexableRoutes = [
+  "",
+  "/sobre",
+  "/experiencia",
+  "/cases",
+  "/contato",
+] as const;
 
 export const localeConfig: Record<
   Locale,

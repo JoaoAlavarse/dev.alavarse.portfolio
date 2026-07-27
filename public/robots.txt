@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /_next/
+Disallow: /api/
+
+Host: https://alavarsedev.com.br
+Sitemap: https://alavarsedev.com.br/sitemap.xml
+
+# Curated context for AI assistants and agentic browsers.
+# This is informational and is not an access-control mechanism.
+LLMs: https://alavarsedev.com.br/llms.txt

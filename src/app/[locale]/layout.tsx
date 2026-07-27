@@ -74,17 +74,12 @@ export async function generateMetadata({
 
     authors: [
       {
-        name: "João Alavarse",
-        url: "https://www.linkedin.com/in/joao-alavarse/",
-      },
-      {
         name: "João Paulo Almeida Alavarse",
-        url: "https://www.linkedin.com/in/joao-alavarse/",
+        url: `${siteUrl}/${locale}/sobre`,
       },
     ],
-
-    creator: "João Alavarse",
-    publisher: "João Alavarse",
+    creator: "João Paulo Almeida Alavarse",
+    publisher: "João Paulo Almeida Alavarse",
     keywords: data.keywords,
   };
 }
@@ -98,6 +93,50 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 
   const currentLocale = locale as Locale;
   const dict = getDictionary(currentLocale);
+  const localeData = localeConfig[currentLocale] || localeConfig.en;
+  const personId = `${siteUrl}/${currentLocale}/sobre#person`;
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": personId,
+    name: "João Paulo Almeida Alavarse",
+    alternateName: ["João Alavarse", "AlavarseDev"],
+    url: `${siteUrl}/${currentLocale}/sobre`,
+    image: {
+      "@type": "ImageObject",
+      url: `${siteUrl}/joao-alavarse.jpeg`,
+      width: 360,
+      height: 450,
+    },
+    jobTitle: "Software Engineer",
+    description: homeSeo[currentLocale].description,
+    inLanguage: localeData.htmlLang,
+    sameAs: [
+      "https://github.com/JoaoAlavarse",
+      "https://www.linkedin.com/in/joao-alavarse/",
+    ],
+    knowsAbout: [
+      "Software Engineering",
+      "Software Architecture",
+      "Legacy System Modernization",
+      "Product Engineering",
+      "ERP Systems",
+      "React",
+      "Next.js",
+      "Java",
+      "Spring Boot",
+      "React Native",
+      "TypeScript",
+      ".NET",
+      "Technical Documentation",
+    ],
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "UMFG",
+      alternateName: "FACEC",
+      url: "https://umfg.edu.br/home/",
+    },
+  };
 
   return (
     <html
@@ -129,38 +168,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@type": "Person",
-              "@context": "https://schema.org",
-              name: "João Alavarse",
-              alternateName: "João Paulo Almeida Alavarse",
-              url: siteUrl,
-              jobTitle: "Full Stack Software Engineer",
-              description: homeSeo.en.description,
-              image: `${siteUrl}/web-app-manifest-512x512.png`,
-              sameAs: [
-                "https://github.com/JoaoAlavarse",
-                "https://www.linkedin.com/in/joao-alavarse/",
-              ],
-              knowsAbout: [
-                "Software Engineering",
-                "Software Architecture",
-                "Product Engineering",
-                "ERP",
-                "React",
-                "Next.js",
-                "Java",
-                "Spring Boot",
-                "React Native",
-                "TypeScript",
-                ".NET",
-                "Technical Communication",
-              ],
-              alumniOf: {
-                "@type": "Organization",
-                name: "UTFPR",
-              },
-            }),
+            __html: JSON.stringify(personJsonLd),
           }}
         />
         <script
@@ -174,7 +182,8 @@ export default async function RootLayout({ children, params }: LayoutProps) {
               inLanguage: ["pt-BR", "en-US", "es-ES"],
               author: {
                 "@type": "Person",
-                name: "João Alavarse",
+                "@id": personId,
+                name: "João Paulo Almeida Alavarse",
               },
             }),
           }}
@@ -182,9 +191,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         <Analytics />
         <ThemeProvider>
           <Navbar locale={currentLocale} />
-          <div id="main-content">
-            {children}
-          </div>
+          <div id="main-content">{children}</div>
           <Footer locale={currentLocale} />
         </ThemeProvider>
       </body>

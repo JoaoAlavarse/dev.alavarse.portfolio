@@ -1,11 +1,11 @@
-import { ImageResponse } from "next/og"
+import { ImageResponse } from "next/og";
 
 export const size = {
   width: 1200,
   height: 630,
-}
+};
 
-export const contentType = "image/png"
+export const contentType = "image/png";
 
 export default function Image() {
   return new ImageResponse(
@@ -18,42 +18,56 @@ export default function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%)",
+          background:
+            "linear-gradient(135deg, #0f172a 0%, #102a43 52%, #111827 100%)",
           color: "white",
           fontFamily: "sans-serif",
+          padding: 72,
         }}
       >
         <div
           style={{
-            fontSize: 64,
-            fontWeight: 700,
-            background: "linear-gradient(90deg, #a78bfa, #60a5fa)",
-            backgroundClip: "text",
-            color: "transparent",
-            marginBottom: 16,
+            fontSize: 24,
+            letterSpacing: 4,
+            textTransform: "uppercase",
+            color: "#67e8f9",
+            marginBottom: 24,
           }}
         >
-          João Alavarse
+          AlavarseDev
+        </div>
+        <div
+          style={{
+            fontSize: 68,
+            fontWeight: 700,
+            color: "#f8fafc",
+            marginBottom: 16,
+            textAlign: "center",
+          }}
+        >
+          João Paulo Almeida Alavarse
         </div>
         <div
           style={{
             fontSize: 28,
-            color: "#94a3b8",
+            color: "#cbd5e1",
+            textAlign: "center",
           }}
         >
-          Full Stack Software Engineer | Architecture | Product | Teaching
+          Engenheiro de Software • Docente do Ensino Superior
         </div>
         <div
           style={{
-            fontSize: 20,
-            color: "#64748b",
-            marginTop: 24,
+            fontSize: 22,
+            color: "#94a3b8",
+            marginTop: 32,
+            textAlign: "center",
           }}
         >
-          alavarsedev.com.br
+          Sistemas reais • Modernização • Produto • Ensino
         </div>
       </div>
     ),
-    size
-  )
+    size,
+  );
 }

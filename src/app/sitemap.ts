@@ -1,31 +1,47 @@
-import { MetadataRoute } from "next"
+import type { MetadataRoute } from "next";
+import {
+  absoluteLocalizedPath,
+  indexableRoutes,
+  siteUrl,
+  supportedLocales,
+} from "@/lib/seo";
+
+const sitemapAlternates = (route = "") =>
+  Object.fromEntries([
+    ...supportedLocales.map((locale) => [
+      locale,
+      absoluteLocalizedPath(locale, route),
+    ]),
+    ["x-default", absoluteLocalizedPath("en", route)],
+  ]);
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://alavarsedev.com.br"
-  const staticLastModified = new Date("2026-03-20T00:00:00.000Z")
+  const staticLastModified = new Date("2026-07-27T00:00:00.000Z");
+  const urls: MetadataRoute.Sitemap = [];
 
-  const locales = ["pt", "en", "es"]
-
-  const routes = ["", "/experiencia", "/cases", "/sobre", "/contato"]
-
-  const urls: MetadataRoute.Sitemap = []
-
-  for (const locale of locales) {
-    // páginas principais
-    for (const route of routes) {
+  for (const locale of supportedLocales) {
+    for (const route of indexableRoutes) {
       urls.push({
-        url: `${base}/${locale}${route}`,
+        url: absoluteLocalizedPath(locale, route),
         lastModified: staticLastModified,
+        changeFrequency: route === "" ? "monthly" : "weekly",
+        priority: route === "" ? 1 : route === "/sobre" ? 0.95 : 0.8,
         alternates: {
-          languages: {
-            pt: `${base}/pt${route}`,
-            en: `${base}/en${route}`,
-            es: `${base}/es${route}`,
-          },
+          languages: sitemapAlternates(route),
         },
-      })
+      });
     }
   }
 
-  return urls
+  urls.push({
+    url: siteUrl,
+    lastModified: staticLastModified,
+    changeFrequency: "monthly",
+    priority: 0.7,
+    alternates: {
+      languages: sitemapAlternates(),
+    },
+  });
+
+  return urls;
 }

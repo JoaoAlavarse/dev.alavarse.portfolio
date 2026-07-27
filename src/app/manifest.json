@@ -1,8 +1,9 @@
 {
-  "name": "AlavarseDev | Desenvolvedor Full Stack",
+  "name": "AlavarseDev | João Paulo Almeida Alavarse",
   "short_name": "AlavarseDev",
-  "description": "João Alavarse, desenvolvedor Full Stack especializado em React, Tailwind, Java e Spring Boot. Projetos reais, performance e código limpo.",
-  "start_url": "/",
+  "description": "Portfólio profissional de João Paulo Almeida Alavarse, engenheiro de software e docente do ensino superior.",
+  "start_url": "/pt",
+  "scope": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

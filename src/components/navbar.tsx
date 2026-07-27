@@ -7,7 +7,6 @@ import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { getDictionary } from "@/lib/get-dictionary";
 import { LanguageSwitcher } from "./language-switcher";
-import { ThemeToggle } from "./theme-toggle";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import type { Locale } from "@/interfaces";
