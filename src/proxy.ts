@@ -3,7 +3,6 @@ import type { NextRequest } from "next/server";
 
 const locales = ["pt", "en", "es"];
 const defaultLocale = "pt";
-const canonicalHost = "alavarsedev.com.br";
 
 const isStaticAsset = (pathname: string) =>
   pathname.startsWith("/_next") ||
@@ -18,16 +17,8 @@ const isStaticAsset = (pathname: string) =>
   pathname.endsWith(".txt");
 
 export function proxy(request: NextRequest) {
-  const { hostname, pathname } = request.nextUrl;
+  const { pathname } = request.nextUrl;
   const url = request.nextUrl.clone();
-
-  const isProductionDomain =
-    hostname === canonicalHost || hostname === `www.${canonicalHost}`;
-
-  if (isProductionDomain) {
-    url.protocol = "https:";
-    url.hostname = canonicalHost;
-  }
 
   const localeFromLegacyProjectPath = locales.find((locale) =>
     pathname.startsWith(`/${locale}/projetos`),
