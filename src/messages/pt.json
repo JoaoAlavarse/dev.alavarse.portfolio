@@ -47,8 +47,8 @@
     "viewAll": "Ver cases"
   },
   "cases": {
-    "title": "Estudos de caso",
-    "description": "Estudos de caso focados em decisão, restrições, trade-offs e lacunas explícitas de evidência.",
+    "title": "Cases como capítulos",
+    "description": "Cada estudo abre uma pergunta diferente: como evoluir algo que não pode parar, quando validar antes de construir, onde modelar regras muda o sistema e como coordenar partes que dependem umas das outras.",
     "competencies": "Competências demonstradas",
     "related": "Cases relacionados"
   },
@@ -128,20 +128,20 @@
   },
   "contact": {
     "title": "Vamos conversar?",
-    "description": "Canal para oportunidades profissionais, conversas técnicas, colaboração em produto, ensino e inovação.",
+    "description": "Se a conversa envolve decisões com consequências reais, sistemas em evolução ou comunicação técnica, faz sentido começar por aqui.",
     "benefits": [
-      "Oportunidades em engenharia de software",
-      "Conversas com lideranças técnicas",
-      "Colaboração em produto e inovação",
-      "Comunicação técnica e ensino"
+      "Modernização de sistemas que já sustentam uma operação",
+      "Decisões de arquitetura com restrições reais",
+      "Evolução de produtos, processos e integrações",
+      "Oportunidades que exigem engenharia, comunicação e responsabilidade operacional",
+      "Ensino e tradução de conhecimento técnico"
     ],
     "actions": {
       "email": "Enviar e-mail",
-      "whatsapp": "WhatsApp",
       "linkedin": "LinkedIn",
       "github": "GitHub"
     },
-    "responseTime": "Respondo normalmente em até 24 horas."
+    "responseTime": "Costumo responder em até um dia útil."
   },
   "timeline": {
     "current": "Atual"

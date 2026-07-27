@@ -23,9 +23,9 @@ export const localeConfig: Record<
 
 export const homeSeo = {
   pt: {
-    title: "João Alavarse | Engenheiro de Software Full Stack",
+    title: "João Alavarse | Engenharia de Software em Sistemas Reais",
     description:
-      "Engenheiro de software Full Stack com atuação em sistemas reais, arquitetura, produto, inovação, ERP, mobile, web, backend e ensino.",
+      "Portfólio de João Alavarse, engenheiro de software que demonstra julgamento técnico por meio de contexto, decisões, restrições e sistemas reais.",
     keywords: [
       "João Alavarse",
       "engenheiro de software",
@@ -91,7 +91,7 @@ export const languageAlternates = (path = "") => ({
   pt: localizedPath("pt", path),
   en: localizedPath("en", path),
   es: localizedPath("es", path),
-  "x-default": localizedPath("en", path),
+  "x-default": localizedPath("pt", path),
 });
 
 export const absoluteLanguageAlternates = (path = "") => ({

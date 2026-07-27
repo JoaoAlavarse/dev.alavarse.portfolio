@@ -137,7 +137,6 @@
     ],
     "actions": {
       "email": "Enviar correo",
-      "whatsapp": "WhatsApp",
       "linkedin": "LinkedIn",
       "github": "GitHub"
     },

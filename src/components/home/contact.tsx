@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { Mail, MessageCircle, Check, Linkedin, Github } from "lucide-react";
+import { Mail, Check, Linkedin, Github } from "lucide-react";
 import { getDictionary } from "@/lib/get-dictionary";
 import type { Locale } from "@/interfaces";
 
@@ -47,17 +47,6 @@ export default async function Contact({
               <Link href="mailto:contato@alavarsedev.com.br">
                 <Mail className="h-4 w-4" />
                 {dict.contact.actions.email}
-              </Link>
-            </Button>
-
-            <Button asChild size="lg" variant="outline" className="gap-2">
-              <Link
-                href="https://wa.me/5544999090699"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="h-4 w-4" />
-                {dict.contact.actions.whatsapp}
               </Link>
             </Button>
 

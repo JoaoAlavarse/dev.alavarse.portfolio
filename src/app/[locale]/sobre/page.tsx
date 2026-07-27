@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Contact from "@/components/home/contact";
 import { Button } from "@/components/ui/button";
+import { aboutPt } from "@/data/portfolio-pt";
 import type { Locale } from "@/interfaces";
 import { getDictionary } from "@/lib/get-dictionary";
 import {
@@ -834,10 +835,13 @@ export async function generateMetadata({
   const { locale } = await params;
   const data = aboutContent[locale];
   const localeData = localeConfig[locale];
+  const title = locale === "pt" ? aboutPt.seo.title : data.seo.title;
+  const description =
+    locale === "pt" ? aboutPt.seo.description : data.seo.description;
 
   return {
-    title: data.seo.title,
-    description: data.seo.description,
+    title,
+    description,
     metadataBase,
     keywords: data.seo.keywords,
     alternates: {
@@ -845,8 +849,8 @@ export async function generateMetadata({
       languages: languageAlternates("/sobre"),
     },
     openGraph: {
-      title: data.seo.title,
-      description: data.seo.description,
+      title,
+      description,
       url: `/${locale}/sobre`,
       siteName: "AlavarseDev",
       locale: localeData.ogLocale,
@@ -855,8 +859,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: data.seo.title,
-      description: data.seo.description,
+      title,
+      description,
       images: sharedOpenGraphImages.map((image) => image.url),
     },
     robots: {
@@ -877,6 +881,90 @@ export default async function AboutPage({
   const localeData = localeConfig[locale];
   const canonicalUrl = `${siteUrl}/${locale}/sobre`;
   const personId = `${canonicalUrl}#person`;
+
+  if (locale === "pt") {
+    return (
+      <main className="relative mx-auto max-w-6xl px-4">
+        <div className="pointer-events-none absolute left-0 top-24 h-80 w-80 -translate-x-1/2 rounded-full bg-purple-500/20 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-1/3 right-0 h-80 w-80 translate-x-1/3 rounded-full bg-blue-500/20 blur-3xl" />
+
+        <section className="relative grid w-full max-w-full min-h-[72vh] items-center gap-12 overflow-visible py-20 lg:grid-cols-[minmax(0,1fr)_360px]">
+          <div className="min-w-0 max-w-88 sm:max-w-none">
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">
+              {aboutPt.hero.eyebrow}
+            </p>
+            <h1 className="mt-5 max-w-full bg-linear-to-r from-purple-400 to-blue-400 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-5xl">
+              {aboutPt.hero.title}
+            </h1>
+            <p className="mt-5 max-w-full wrap-break-word text-lg font-semibold text-foreground/85 sm:text-xl">
+              {aboutPt.hero.subtitle}
+            </p>
+            <p className="mt-6 max-w-full wrap-break-word text-base leading-8 text-muted-foreground sm:text-lg">
+              {aboutPt.hero.description}
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Button asChild size="lg">
+                <Link href={`/${locale}/cases`}>Ver cases</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link href={`/${locale}/experiencia`}>Ver experiência</Link>
+              </Button>
+            </div>
+          </div>
+
+          <div className="relative mx-auto flex w-full max-w-[18rem] justify-center sm:max-w-90 md:justify-self-end">
+            <div className="absolute -inset-4 rounded-full bg-linear-to-tr from-purple-500/30 via-blue-500/20 to-pink-500/30 blur-3xl" />
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-background/60 p-2 shadow-xl backdrop-blur-lg">
+              <Image
+                src="/joao-alavarse.jpeg"
+                alt="Foto profissional de João Paulo Almeida Alavarse"
+                width={360}
+                height={450}
+                className="w-full rounded-xl object-cover"
+                priority
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="space-y-16 py-16">
+          {aboutPt.sections.map((section) => (
+            <article
+              key={section.title}
+              className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]"
+            >
+              <h2 className="text-3xl font-bold tracking-tight">
+                {section.title}
+              </h2>
+              <div className="space-y-5 text-lg leading-8 text-muted-foreground">
+                {section.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <section className="py-16">
+          <h2 className="text-3xl font-bold tracking-tight">
+            Princípios demonstrados por fatos
+          </h2>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {aboutPt.principles.map((principle) => (
+              <article key={principle.title} className="rounded-lg border p-5">
+                <h3 className="text-lg font-bold">{principle.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                  {principle.evidence}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <Contact params={Promise.resolve({ locale })} />
+      </main>
+    );
+  }
 
   const personJsonLd = {
     "@context": "https://schema.org",
@@ -1012,7 +1100,7 @@ export default async function AboutPage({
           </div>
         </div>
 
-        <div className="relative mx-auto flex w-full max-w-[360px] justify-center md:justify-self-end">
+        <div className="relative mx-auto flex w-full max-w-90 justify-center md:justify-self-end">
           <div className="absolute -inset-4 rounded-full bg-linear-to-tr from-purple-500/30 via-blue-500/20 to-pink-500/30 blur-3xl" />
           <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-background/60 p-2 shadow-xl backdrop-blur-lg">
             <Image

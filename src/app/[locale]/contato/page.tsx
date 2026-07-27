@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default function ContactPage({ params }: Props) {
   return (
-    <main className="container mx-auto px-6 py-24">
+    <main className="container mx-auto px-6">
       <Contact params={params} />
     </main>
   );

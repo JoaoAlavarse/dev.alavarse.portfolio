@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { publicCaseIdsPt } from "@/data/portfolio-pt";
 import {
   absoluteLocalizedPath,
   indexableRoutes,
@@ -12,7 +13,7 @@ const sitemapAlternates = (route = "") =>
       locale,
       absoluteLocalizedPath(locale, route),
     ]),
-    ["x-default", absoluteLocalizedPath("en", route)],
+    ["x-default", absoluteLocalizedPath("pt", route)],
   ]);
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -42,6 +43,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       languages: sitemapAlternates(),
     },
   });
+
+  for (const id of publicCaseIdsPt) {
+    const route = `/cases/${id}`;
+
+    urls.push({
+      url: absoluteLocalizedPath("pt", route),
+      lastModified: staticLastModified,
+      changeFrequency: "monthly",
+      priority: id === "kerootica" ? 0.9 : 0.75,
+      alternates: {
+        languages: {
+          pt: absoluteLocalizedPath("pt", route),
+          "x-default": absoluteLocalizedPath("pt", route),
+        },
+      },
+    });
+  }
 
   return urls;
 }

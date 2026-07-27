@@ -4,11 +4,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Check } from "lucide-react";
 import ProjectCard from "@/components/project-card";
+import { publicCaseIdsPt } from "@/data/portfolio-pt";
 import { getCases } from "@/lib/get-cases";
 import { getDictionary } from "@/lib/get-dictionary";
 import {
   absoluteLocalizedPath,
-  languageAlternates,
   metadataBase,
   sharedOpenGraphImages,
   siteUrl,
@@ -58,27 +58,42 @@ export function generateStaticParams() {
   const locales: Locale[] = ["pt", "en", "es"];
 
   return locales.flatMap((locale) =>
-    getCases(locale).map((caseStudy) => ({
-      locale,
-      id: caseStudy.id,
-    })),
+    getCases(locale)
+      .filter((caseStudy) =>
+        locale === "pt" ? publicCaseIdsPt.includes(caseStudy.id) : true,
+      )
+      .map((caseStudy) => ({
+        locale,
+        id: caseStudy.id,
+      })),
   );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, id } = await params;
   const caseStudy = getCases(locale).find((item) => item.id === id);
+  const isPublicPtCase =
+    locale === "pt" && caseStudy ? publicCaseIdsPt.includes(caseStudy.id) : false;
+  const alternates: Metadata["alternates"] = isPublicPtCase
+    ? {
+        canonical: `/${locale}/cases/${id}`,
+        languages: {
+          pt: `/pt/cases/${id}`,
+          "x-default": `/pt/cases/${id}`,
+        },
+      }
+    : {
+        canonical: `/${locale}/cases/${id}`,
+      };
 
   if (!caseStudy) return {};
+  if (locale === "pt" && !publicCaseIdsPt.includes(caseStudy.id)) return {};
 
   return {
     title: `${caseStudy.name} | Case | João Alavarse`,
     description: caseStudy.summary,
     metadataBase,
-    alternates: {
-      canonical: `/${locale}/cases/${id}`,
-      languages: languageAlternates(`/cases/${id}`),
-    },
+    alternates,
     openGraph: {
       title: `${caseStudy.name} | Case | João Alavarse`,
       description: caseStudy.summary,
@@ -94,8 +109,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: sharedOpenGraphImages.map((image) => image.url),
     },
     robots: {
-      index: false,
+      index: isPublicPtCase,
       follow: true,
+      googleBot: {
+        index: isPublicPtCase,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
   };
 }
@@ -113,16 +135,15 @@ function isGapItem(item: string) {
 }
 
 function ContentList({ items }: { items: string[] }) {
+  const publicItems = items.filter((item) => !isGapItem(item));
+  if (!publicItems.length) return null;
+
   return (
     <div className="mt-4 space-y-3">
-      {items.map((item) => (
+      {publicItems.map((item) => (
         <p
           key={item}
-          className={
-            isGapItem(item)
-              ? "text-sm italic text-muted-foreground/80 border-l-2 border-yellow-500/40 pl-3"
-              : "text-muted-foreground leading-relaxed"
-          }
+          className="text-muted-foreground leading-relaxed"
         >
           {item}
         </p>
@@ -133,6 +154,7 @@ function ContentList({ items }: { items: string[] }) {
 
 function ProseBlock({ section }: { section?: CaseSection }) {
   if (!section) return null;
+  if (!section.content.some((item) => !isGapItem(item))) return null;
 
   return (
     <div>
@@ -160,6 +182,9 @@ function DecisionBlock({
     { label: labels.tradeoffs, items: decision.tradeoffs },
     { label: labels.consequences, items: decision.consequences },
   ];
+  const visibleBlocks = blocks.filter((block) =>
+    block.items.some((item) => !isGapItem(item)),
+  );
 
   return (
     <article className="rounded-2xl border border-purple-400/20 bg-purple-500/5 p-6 sm:p-8">
@@ -170,7 +195,7 @@ function DecisionBlock({
         {decision.title}
       </h3>
       <div className="mt-8 grid gap-8 md:grid-cols-2">
-        {blocks.map((block) => (
+        {visibleBlocks.map((block) => (
           <div key={block.label}>
             <h4 className="text-sm font-semibold uppercase tracking-wide text-foreground">
               {block.label}
@@ -190,14 +215,18 @@ export default async function CaseDetailsPage({ params }: Props) {
   const caseStudy = cases.find((item) => item.id === id);
 
   if (!caseStudy) return notFound();
+  if (locale === "pt" && !publicCaseIdsPt.includes(caseStudy.id)) {
+    return notFound();
+  }
 
-  const relatedCases = cases.filter((item) =>
-    caseStudy.relatedProjects.includes(item.id),
-  );
+  const relatedCases = cases.filter((item) => {
+    if (!caseStudy.relatedProjects.includes(item.id)) return false;
+    return locale === "pt" ? publicCaseIdsPt.includes(item.id) : true;
+  });
   const byId = sectionMap(caseStudy.sections);
 
   return (
-    <main className="container mx-auto px-6 py-24 space-y-24">
+    <main className="mx-auto max-w-[22rem] space-y-24 px-4 py-24 sm:container sm:px-6">
       <header className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
         <div>
           <p className="text-sm font-medium text-muted-foreground">
@@ -249,7 +278,7 @@ export default async function CaseDetailsPage({ params }: Props) {
                 {byId.role.title}
               </p>
               <div className="mt-3 space-y-2">
-                {byId.role.content.map((item) => (
+                {byId.role.content.filter((item) => !isGapItem(item)).map((item) => (
                   <p key={item} className="text-sm leading-relaxed">
                     {item}
                   </p>
@@ -294,15 +323,13 @@ export default async function CaseDetailsPage({ params }: Props) {
             <ProseBlock section={byId.problem} />
           </section>
 
-          <ProseBlock section={byId.restrictions} />
-
           {byId.responsibilities && (
             <section>
               <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
                 {byId.responsibilities.title}
               </h2>
               <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-                {byId.responsibilities.content.map((item) => (
+                {byId.responsibilities.content.filter((item) => !isGapItem(item)).map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-purple-400" />
                     <span className="text-muted-foreground leading-relaxed">
@@ -314,10 +341,7 @@ export default async function CaseDetailsPage({ params }: Props) {
             </section>
           )}
 
-          <section className="grid gap-12 border-y border-white/10 py-16 md:grid-cols-2">
-            <ProseBlock section={byId.stakeholders} />
-            <ProseBlock section={byId.successCriteria} />
-          </section>
+          <ProseBlock section={byId.restrictions} />
 
           <section className="space-y-10">
             <ProseBlock section={byId.alternatives} />
@@ -368,6 +392,11 @@ export default async function CaseDetailsPage({ params }: Props) {
           <section className="grid gap-12 md:grid-cols-2">
             <ProseBlock section={byId.learnings} />
             <ProseBlock section={byId.principles} />
+          </section>
+
+          <section className="grid gap-12 border-t border-white/10 pt-16 md:grid-cols-2">
+            <ProseBlock section={byId.stakeholders} />
+            <ProseBlock section={byId.successCriteria} />
           </section>
         </div>
       </div>
