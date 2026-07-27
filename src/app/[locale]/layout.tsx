@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
-import { ThemeProvider } from "@/components/theme-provider";
 import type { Locale } from "@/interfaces";
 import { getDictionary } from "@/lib/get-dictionary";
 import {
@@ -160,11 +159,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         }}
       />
       <Analytics />
-      <ThemeProvider>
-        <Navbar locale={currentLocale} />
-        <div id="main-content">{children}</div>
-        <Footer locale={currentLocale} />
-      </ThemeProvider>
+      <Navbar locale={currentLocale} />
+      <div id="main-content">{children}</div>
+      <Footer locale={currentLocale} />
     </>
   );
 }

@@ -38,13 +38,13 @@ export function Footer({ locale }: { locale: Locale }) {
 
         <div className="flex justify-center md:justify-end gap-6">
           <Link href="https://github.com/JoaoAlavarse" target="_blank" aria-label="GitHub">
-            <Github className="w-6 h-6 text-foreground hover:drop-shadow-[0_0_10px_rgba(128,0,255,0.8)] transition-all duration-300" />
+            <Github className="w-6 h-6 text-foreground hover:drop-shadow-[0_0_10px_rgba(128,0,255,0.8)] transition-all duration-300" aria-hidden="true" />
           </Link>
           <Link href="https://www.linkedin.com/in/joao-alavarse/" target="_blank" aria-label="LinkedIn">
-            <Linkedin className="w-6 h-6 text-foreground hover:drop-shadow-[0_0_10px_rgba(0,128,255,0.8)] transition-all duration-300" />
+            <Linkedin className="w-6 h-6 text-foreground hover:drop-shadow-[0_0_10px_rgba(0,128,255,0.8)] transition-all duration-300" aria-hidden="true" />
           </Link>
           <Link href="mailto:contato@alavarsedev.com.br" aria-label="Email">
-            <Mail className="w-6 h-6 text-foreground hover:drop-shadow-[0_0_10px_rgba(255,0,128,0.8)] transition-all duration-300" />
+            <Mail className="w-6 h-6 text-foreground hover:drop-shadow-[0_0_10px_rgba(255,0,128,0.8)] transition-all duration-300" aria-hidden="true" />
           </Link>
         </div>
       </div>

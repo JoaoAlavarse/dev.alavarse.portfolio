@@ -331,7 +331,10 @@ export default async function CaseDetailsPage({ params }: Props) {
               <ul className="mt-8 grid gap-4 sm:grid-cols-2">
                 {byId.responsibilities.content.filter((item) => !isGapItem(item)).map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-purple-400" />
+                    <Check
+                      className="mt-0.5 h-5 w-5 shrink-0 text-purple-400"
+                      aria-hidden="true"
+                    />
                     <span className="text-muted-foreground leading-relaxed">
                       {item}
                     </span>

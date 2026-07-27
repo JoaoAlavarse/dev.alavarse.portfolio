@@ -32,7 +32,7 @@ export default async function Contact({
           <ul className="mt-8 grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
             {dict.contact.benefits.map((benefit, index) => (
               <li key={index} className="flex items-center gap-2">
-                <Check className="h-4 w-4 text-purple-400" />
+                <Check className="h-4 w-4 text-purple-400" aria-hidden="true" />
                 {benefit}
               </li>
             ))}
@@ -45,7 +45,7 @@ export default async function Contact({
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild size="lg" className="gap-2">
               <Link href="mailto:contato@alavarsedev.com.br">
-                <Mail className="h-4 w-4" />
+                <Mail className="h-4 w-4" aria-hidden="true" />
                 {dict.contact.actions.email}
               </Link>
             </Button>
@@ -56,7 +56,7 @@ export default async function Contact({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Linkedin className="h-4 w-4" />
+                <Linkedin className="h-4 w-4" aria-hidden="true" />
                 {dict.contact.actions.linkedin}
               </Link>
             </Button>
@@ -67,7 +67,7 @@ export default async function Contact({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Github className="h-4 w-4" />
+                <Github className="h-4 w-4" aria-hidden="true" />
                 {dict.contact.actions.github}
               </Link>
             </Button>

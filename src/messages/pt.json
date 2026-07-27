@@ -8,7 +8,8 @@
     "experience": "Experiência",
     "about": "Sobre",
     "contact": "Contato",
-    "openMenu": "Abrir menu de navegação"
+    "openMenu": "Abrir menu de navegação",
+    "closeMenu": "Fechar menu de navegação"
   },
   "stats": {
     "title": "Em números",

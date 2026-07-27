@@ -1078,7 +1078,10 @@ export default async function AboutPage({
           <ul className="mt-8 grid gap-3 text-sm text-muted-foreground sm:grid-cols-3">
             {content.hero.facts.map((fact) => (
               <li key={fact} className="flex gap-2">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <CheckCircle2
+                  className="mt-0.5 h-4 w-4 shrink-0 text-primary"
+                  aria-hidden="true"
+                />
                 <span>{fact}</span>
               </li>
             ))}
@@ -1088,13 +1091,13 @@ export default async function AboutPage({
             <Button asChild size="lg" className="gap-2">
               <Link href={`/${locale}/contato`}>
                 {content.hero.primaryAction}
-                <ArrowUpRight className="h-4 w-4" />
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="gap-2">
               <Link href={`/${locale}/cases`}>
                 {content.hero.secondaryAction}
-                <ArrowUpRight className="h-4 w-4" />
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
           </div>
@@ -1152,7 +1155,7 @@ export default async function AboutPage({
           <SectionHeading title={content.sections.currentTitle} />
           <div className="space-y-8">
             <ExperienceHeader
-              icon={<BriefcaseBusiness className="h-5 w-5" />}
+              icon={<BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />}
               role={content.log.role}
               period={content.log.period}
             />
@@ -1178,14 +1181,14 @@ export default async function AboutPage({
       <section className="grid gap-12 py-20 lg:grid-cols-2">
         <NarrativePanel
           title={content.sections.principleTitle}
-          icon={<ShieldCheck className="h-5 w-5" />}
+          icon={<ShieldCheck className="h-5 w-5" aria-hidden="true" />}
           role={content.sections.principleLead}
           period=""
           paragraphs={[content.sections.principleBody, ...content.philosophy.slice(0, 1)]}
         />
         <NarrativePanel
           title={content.sections.teachingTitle}
-          icon={<GraduationCap className="h-5 w-5" />}
+          icon={<GraduationCap className="h-5 w-5" aria-hidden="true" />}
           role={content.teaching.role}
           period={content.teaching.period}
           paragraphs={content.teaching.paragraphs}
@@ -1196,7 +1199,7 @@ export default async function AboutPage({
       <section className="grid gap-12 py-20 lg:grid-cols-2">
         <NarrativePanel
           title={content.sections.previousTitle}
-          icon={<Route className="h-5 w-5" />}
+          icon={<Route className="h-5 w-5" aria-hidden="true" />}
           role={content.previous.role}
           period={content.previous.period}
           paragraphs={content.previous.paragraphs}
@@ -1209,7 +1212,7 @@ export default async function AboutPage({
                 key={item.title}
                 className="rounded-xl border p-5 transition hover:border-purple-400/50"
               >
-                <BookOpen className="h-5 w-5 text-primary" />
+                <BookOpen className="h-5 w-5 text-primary" aria-hidden="true" />
                 <h3 className="mt-4 font-semibold">{item.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
                   {item.institution} • {item.period}

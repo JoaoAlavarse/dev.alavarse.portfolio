@@ -44,18 +44,18 @@ export default async function Home({
       <div className="pointer-events-none absolute left-0 top-24 h-80 w-80 -translate-x-1/2 rounded-full bg-purple-500/20 blur-3xl" />
       <div className="pointer-events-none absolute bottom-1/3 right-0 h-80 w-80 translate-x-1/3 rounded-full bg-blue-500/20 blur-3xl" />
 
-      <section className="relative grid w-full max-w-full min-h-[78vh] items-center gap-10 overflow-visible py-20 lg:grid-cols-[1.15fr_0.85fr]">
-        <div className="min-w-0 max-w-[22rem] sm:max-w-none">
+      <section className="relative grid w-full max-w-full min-h-[78vh] items-center gap-10 overflow-visible py-20 lg:grid-cols-[1.15fr_0.85fr]">  
+        <div className="min-w-0 w-full max-w-160">
           <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">
             {homePt.hero.eyebrow}
           </p>
-          <h1 className="mt-5 max-w-full bg-linear-to-r from-purple-400 to-blue-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-6xl">
+          <h1 className="mt-5 max-w-full min-h-23 bg-linear-to-r from-purple-400 to-blue-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:min-h-18 sm:text-6xl">
             {homePt.hero.title}
           </h1>
-          <p className="mt-5 max-w-full break-words text-xl font-semibold leading-snug sm:text-2xl">
+          <p className="mt-5 max-w-full min-h-14 wrap-break-word text-xl font-semibold leading-snug sm:min-h-8 sm:text-2xl">
             {homePt.hero.subtitle}
           </p>
-          <p className="mt-6 max-w-full break-words text-base leading-8 text-muted-foreground sm:text-lg">
+          <p className="mt-6 max-w-full min-h-24 wrap-break-word text-base leading-8 text-muted-foreground sm:min-h-16 sm:text-lg">
             {homePt.hero.description}
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -70,16 +70,17 @@ export default async function Home({
           </div>
         </div>
 
-        <div className="relative mx-auto flex w-full max-w-[18rem] justify-center sm:max-w-[360px] lg:justify-self-end">
+        <div className="relative mx-auto flex w-full max-w-[18rem] justify-center sm:max-w-90 lg:justify-self-end">
           <div className="absolute -inset-4 rounded-full bg-linear-to-tr from-purple-500/30 via-blue-500/20 to-pink-500/30 blur-3xl" />
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-background/60 p-2 shadow-xl backdrop-blur-lg">
+          <div className="relative aspect-4/5 w-full overflow-hidden rounded-2xl border border-white/10 bg-background/60 p-2 shadow-xl backdrop-blur-lg">
             <Image
               src="/joao-alavarse.jpeg"
               alt="Foto profissional de João Paulo Almeida Alavarse"
-              width={360}
-              height={450}
-              className="w-full rounded-xl object-cover"
+              fill
+              sizes="(max-width: 640px) 288px, 360px"
+              className="rounded-xl object-cover p-2"
               priority
+              fetchPriority="high"
             />
           </div>
         </div>

@@ -162,7 +162,7 @@ export default function CaseCard({
         <Button asChild variant="outline" className="gap-2">
           <Link href={`/${locale}/cases/${caseStudy.id}`}>
             Ler case
-            <ArrowUpRight className="h-4 w-4" />
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </Button>
       </div>

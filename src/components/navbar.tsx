@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
@@ -12,6 +13,7 @@ import { DialogTitle } from "@radix-ui/react-dialog";
 import type { Locale } from "@/interfaces";
 
 export function Navbar({ locale }: { locale: Locale }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dict = getDictionary(locale);
   const navItems = [
     { label: dict.navbar.home, href: `/${locale}` },
@@ -58,14 +60,21 @@ export function Navbar({ locale }: { locale: Locale }) {
           ))}
 
           <LanguageSwitcher currentLocale={locale} />
-          {/* <ThemeToggle /> */}
         </div>
 
         {/* Mobile */}
-        <Sheet>
+        <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-5 w-5" />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              aria-label={
+                isMenuOpen ? dict.navbar.closeMenu : dict.navbar.openMenu
+              }
+              aria-expanded={isMenuOpen}
+            >
+              <Menu className="h-5 w-5" aria-hidden="true" />
             </Button>
           </SheetTrigger>
 
@@ -86,7 +95,6 @@ export function Navbar({ locale }: { locale: Locale }) {
 
               <div className="mt-4 flex items-center gap-4">
                 <LanguageSwitcher currentLocale={locale} />
-                {/* <ThemeToggle /> */}
               </div>
             </nav>
           </SheetContent>

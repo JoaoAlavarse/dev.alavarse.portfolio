@@ -24,6 +24,8 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
         <button
           key={locale.code}
           onClick={() => handleChange(locale.code)}
+          aria-pressed={locale.code === currentLocale}
+          aria-label={`Alterar idioma para ${locale.label}`}
           className={`px-2 py-1 rounded ${
             locale.code === currentLocale
               ? "bg-purple-400 text-white"
