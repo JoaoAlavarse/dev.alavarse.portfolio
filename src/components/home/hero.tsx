@@ -53,7 +53,7 @@ export async function Hero({ params }: { params: Promise<{ locale: Locale }> }) 
               alt={dict.hero.imageAlt}
               width={360}
               height={360}
-              sizes="(max-width: 768px) 288px, 360px"
+              sizes="(max-width: 767px) 272px, 344px"
               quality={70}
               className="h-auto w-full max-w-90 rounded-xl object-cover"
               style={{ width: "100%", height: "auto", aspectRatio: "1 / 1" }}

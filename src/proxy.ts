@@ -4,9 +4,22 @@ import type { NextRequest } from "next/server";
 const locales = ["pt", "en", "es"];
 const defaultLocale = "pt";
 
+const localeExemptPaths = new Set([
+  "/manifest.json",
+  "/manifest.webmanifest",
+  "/robots.txt",
+  "/sitemap.xml",
+  "/favicon.ico",
+  "/icon0.svg",
+  "/icon1.png",
+  "/apple-icon.png",
+  "/opengraph-image",
+]);
+
 const isStaticAsset = (pathname: string) =>
   pathname.startsWith("/_next") ||
   pathname.startsWith("/assets") ||
+  localeExemptPaths.has(pathname) ||
   pathname.endsWith(".ico") ||
   pathname.endsWith(".jpg") ||
   pathname.endsWith(".jpeg") ||
@@ -14,7 +27,8 @@ const isStaticAsset = (pathname: string) =>
   pathname.endsWith(".webp") ||
   pathname.endsWith(".svg") ||
   pathname.endsWith(".xml") ||
-  pathname.endsWith(".txt");
+  pathname.endsWith(".txt") ||
+  pathname.endsWith(".webmanifest");
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -38,9 +52,7 @@ export function proxy(request: NextRequest) {
   }
 
   if (isStaticAsset(pathname)) {
-    return url.href === request.nextUrl.href
-      ? NextResponse.next()
-      : NextResponse.redirect(url, 308);
+    return NextResponse.next();
   }
 
   const pathnameHasLocale = locales.some(
@@ -49,9 +61,8 @@ export function proxy(request: NextRequest) {
 
   if (!pathnameHasLocale) {
     url.pathname = `/${defaultLocale}${pathname}`;
+    return NextResponse.redirect(url, 308);
   }
 
-  return url.href === request.nextUrl.href
-    ? NextResponse.next()
-    : NextResponse.redirect(url, 308);
+  return NextResponse.next();
 }

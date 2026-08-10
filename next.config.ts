@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     qualities: [70, 75],
     deviceSizes: [360, 384, 640, 750, 828, 1080, 1200],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 288, 360],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 288, 360, 540, 720],
   },
   experimental: {
     // Inline CSS into <style> to remove the render-blocking stylesheet round-trip (FCP/LCP).

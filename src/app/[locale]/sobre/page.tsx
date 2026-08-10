@@ -920,7 +920,7 @@ export default async function AboutPage({
                 alt="Foto profissional de João Paulo Almeida Alavarse"
                 width={360}
                 height={360}
-                sizes="(max-width: 768px) 288px, 360px"
+                sizes="(max-width: 767px) 272px, 344px"
                 quality={70}
                 className="aspect-square w-full rounded-xl object-cover"
                 priority
@@ -1113,7 +1113,7 @@ export default async function AboutPage({
               alt={content.hero.imageAlt}
               width={360}
               height={360}
-              sizes="(max-width: 768px) 288px, 360px"
+              sizes="(max-width: 767px) 272px, 344px"
               quality={70}
               className="aspect-square w-full rounded-xl object-cover"
               priority
