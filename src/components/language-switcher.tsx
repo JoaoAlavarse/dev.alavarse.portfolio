@@ -20,9 +20,9 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
             data-locale-switch={locale.code}
             aria-current={isActive ? "page" : undefined}
             aria-label={`Alterar idioma para ${locale.label}`}
-            className={`rounded px-2 py-1 ${
+            className={`rounded px-2 py-1 text-sm font-medium ${
               isActive
-                ? "bg-purple-400 text-white"
+                ? "bg-purple-700 text-white"
                 : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
             }`}
           >
