@@ -5,7 +5,7 @@ import academicExperienceEs from "@/data/academic-experience-es.json";
 import professionalExperiencePt from "@/data/professional-experience-pt.json";
 import professionalExperienceEn from "@/data/professional-experience-en.json";
 import professionalExperienceEs from "@/data/professional-experience-es.json";
-import ClientTimeline from "@/components/client-timeline";
+import { Timeline } from "@/components/timeline";
 import ProjectCard from "@/components/project-card";
 import CaseCard from "@/components/case-card";
 import { experiencePt, publicCaseIdsPt } from "@/data/portfolio-pt";
@@ -191,7 +191,7 @@ export default async function ExperiencePage({ params }: Props) {
 
       <section>
         <h2 className="text-3xl font-bold">{dict.experience.professional}</h2>
-        <ClientTimeline
+        <Timeline
           items={professionalExperience as TimelineItem[]}
           currentLabel={dict.timeline.current}
         />
@@ -199,7 +199,7 @@ export default async function ExperiencePage({ params }: Props) {
 
       <section>
         <h2 className="text-3xl font-bold">{dict.experience.academic}</h2>
-        <ClientTimeline
+        <Timeline
           items={academicExperience as TimelineItem[]}
           currentLabel={dict.timeline.current}
         />

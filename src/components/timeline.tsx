@@ -1,8 +1,13 @@
-import { TimelineItem } from "@/interfaces";
-import { motion } from "framer-motion";
 import { Briefcase, GraduationCap, Rocket } from "lucide-react";
+import type { TimelineItem } from "@/interfaces";
 
-export function Timeline({ items, currentLabel }: { items: TimelineItem[]; currentLabel: string }) {
+export function Timeline({
+  items,
+  currentLabel,
+}: {
+  items: TimelineItem[];
+  currentLabel: string;
+}) {
   const icons = {
     work: Briefcase,
     education: GraduationCap,
@@ -11,8 +16,7 @@ export function Timeline({ items, currentLabel }: { items: TimelineItem[]; curre
 
   return (
     <div className="relative mt-20">
-      {/* Linha central */}
-      <div className="absolute left-4 md:left-1/2 top-0 h-full w-px -translate-x-1/2 bg-linear-to-b from-purple-400/60 via-blue-400/60 to-transparent" />
+      <div className="absolute left-4 top-0 h-full w-px -translate-x-1/2 bg-linear-to-b from-purple-400/60 via-blue-400/60 to-transparent md:left-1/2" />
 
       <ul className="space-y-20">
         {items.map((item, index) => {
@@ -20,25 +24,18 @@ export function Timeline({ items, currentLabel }: { items: TimelineItem[]; curre
           const Icon = icons[item.type];
 
           return (
-            <motion.li
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+            <li
+              key={`${item.title}-${item.period}`}
               className={`relative flex flex-col md:flex-row ${
                 isLeft
                   ? "md:justify-start md:pr-[50%]"
                   : "md:justify-end md:pl-[50%]"
               }`}
             >
-              {/* Ponto */}
-              <span className="absolute left-4 md:left-1/2 top-8 h-5 w-5 -translate-x-1/2 rounded-full bg-linear-to-r from-purple-400 to-blue-400 shadow-lg" />
+              <span className="absolute left-4 top-8 h-5 w-5 -translate-x-1/2 rounded-full bg-linear-to-r from-purple-400 to-blue-400 shadow-lg md:left-1/2" />
 
-              {/* Card */}
               <div
-                className={`mt-4 md:mt-0 w-full max-w-md rounded-2xl border p-6 shadow-xl backdrop-blur-md
-                ${
+                className={`mt-4 w-full max-w-md rounded-2xl border p-6 shadow-xl backdrop-blur-md md:mt-0 ${
                   item.current
                     ? "border-purple-400/60 bg-purple-400/10"
                     : "bg-background/80"
@@ -57,14 +54,12 @@ export function Timeline({ items, currentLabel }: { items: TimelineItem[]; curre
                 </div>
 
                 <h3 className="mt-3 text-lg font-bold">{item.title}</h3>
-
                 <p className="text-sm text-muted-foreground">{item.subtitle}</p>
-
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                   {item.description}
                 </p>
               </div>
-            </motion.li>
+            </li>
           );
         })}
       </ul>

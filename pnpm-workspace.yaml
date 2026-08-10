@@ -1,3 +1,14 @@
 allowBuilds:
   sharp: true
   unrs-resolver: true
+
+overrides:
+  flatted: ">=3.4.2"
+  "picomatch@2": "2.3.2"
+  "picomatch@4": "4.0.5"
+  "brace-expansion@1": "1.1.18"
+  "brace-expansion@5": "5.0.9"
+  js-yaml: ">=4.3.1"
+  postcss: ">=8.5.23"
+  nanoid: ">=3.3.17"
+  "@babel/core": ">=7.29.1"

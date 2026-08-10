@@ -7,7 +7,7 @@ export function Footer({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
 
   return (
-    <footer className="bg-background/70 backdrop-blur-lg border-t border-border py-10 mt-16">
+    <footer className="mt-auto border-t border-border bg-background/70 py-10 backdrop-blur-lg">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start px-6">
         <div className="text-center md:text-left">
           <h2 className="text-2xl font-bold bg-linear-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">

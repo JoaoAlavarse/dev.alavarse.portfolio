@@ -51,10 +51,13 @@ export async function Hero({ params }: { params: Promise<{ locale: Locale }> }) 
             <Image
               src="/joao-alavarse.jpeg"
               alt={dict.hero.imageAlt}
-              width={360}
-              height={450}
-              className="rounded-xl object-cover transition duration-300"
+              width={640}
+              height={640}
+              sizes="(max-width: 768px) 288px, 360px"
+              className="h-auto w-full max-w-[360px] rounded-xl object-cover"
+              style={{ width: "100%", height: "auto", aspectRatio: "1 / 1" }}
               priority
+              fetchPriority="high"
             />
           </div>
         </div>

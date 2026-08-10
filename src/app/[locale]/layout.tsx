@@ -160,7 +160,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       />
       <Analytics />
       <Navbar locale={currentLocale} />
-      <div id="main-content">{children}</div>
+      <div id="main-content" className="flex-1">
+        {children}
+      </div>
       <Footer locale={currentLocale} />
     </>
   );

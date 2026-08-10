@@ -72,13 +72,14 @@ export default async function Home({
 
         <div className="relative mx-auto flex w-full max-w-[18rem] justify-center sm:max-w-90 lg:justify-self-end">
           <div className="absolute -inset-4 rounded-full bg-linear-to-tr from-purple-500/30 via-blue-500/20 to-pink-500/30 blur-3xl" />
-          <div className="relative aspect-4/5 w-full overflow-hidden rounded-2xl border border-white/10 bg-background/60 p-2 shadow-xl backdrop-blur-lg">
+          <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-white/10 bg-background/60 p-2 shadow-xl backdrop-blur-lg">
             <Image
               src="/joao-alavarse.jpeg"
               alt="Foto profissional de João Paulo Almeida Alavarse"
-              fill
+              width={640}
+              height={640}
               sizes="(max-width: 640px) 288px, 360px"
-              className="rounded-xl object-cover p-2"
+              className="h-full w-full rounded-xl object-cover"
               priority
               fetchPriority="high"
             />

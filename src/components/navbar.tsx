@@ -1,19 +1,11 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu } from "lucide-react";
-import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { getDictionary } from "@/lib/get-dictionary";
 import { LanguageSwitcher } from "./language-switcher";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { DialogTitle } from "@radix-ui/react-dialog";
+import { MobileNav } from "./mobile-nav";
 import type { Locale } from "@/interfaces";
 
 export function Navbar({ locale }: { locale: Locale }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dict = getDictionary(locale);
   const navItems = [
     { label: dict.navbar.home, href: `/${locale}` },
@@ -26,29 +18,45 @@ export function Navbar({ locale }: { locale: Locale }) {
   return (
     <header className="border-b">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
-        {/* Logo */}
         <Link
           href={`/${locale}`}
-          className="text-lg font-semibold flex gap-4 items-center"
+          className="flex h-10 shrink-0 items-center gap-3"
         >
-          <Image
-            src="/logo.svg"
-            alt="AlavarseDev Logo"
-            width={52}
-            height={52}
-            priority
-          />
-          <Image
-            src="/name-logo.svg"
-            alt="AlavarseDev"
-            width={140}
-            height={32}
-            priority
-          />
+          {/* logo.svg is 357×243 — reserve exact aspect to avoid CLS */}
+          <span
+            className="relative block shrink-0 overflow-hidden"
+            style={{ width: 53, height: 36 }}
+          >
+            <Image
+              src="/logo.svg"
+              alt="AlavarseDev Logo"
+              width={53}
+              height={36}
+              sizes="53px"
+              className="h-full w-full object-contain"
+              style={{ width: 53, height: 36 }}
+              priority
+            />
+          </span>
+          {/* name-logo.svg is 626×136 */}
+          <span
+            className="relative hidden shrink-0 overflow-hidden sm:block"
+            style={{ width: 128, height: 28 }}
+          >
+            <Image
+              src="/name-logo.svg"
+              alt="AlavarseDev"
+              width={128}
+              height={28}
+              sizes="128px"
+              className="h-full w-full object-contain"
+              style={{ width: 128, height: 28 }}
+              priority
+            />
+          </span>
         </Link>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden min-h-9 items-center gap-6 md:flex">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -62,43 +70,14 @@ export function Navbar({ locale }: { locale: Locale }) {
           <LanguageSwitcher currentLocale={locale} />
         </div>
 
-        {/* Mobile */}
-        <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-          <SheetTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              aria-label={
-                isMenuOpen ? dict.navbar.closeMenu : dict.navbar.openMenu
-              }
-              aria-expanded={isMenuOpen}
-            >
-              <Menu className="h-5 w-5" aria-hidden="true" />
-            </Button>
-          </SheetTrigger>
-
-          <SheetContent side="right">
-            <VisuallyHidden>
-              <DialogTitle>{dict.navbar.openMenu}</DialogTitle>
-            </VisuallyHidden>
-            <nav className="flex flex-col gap-4 mt-8 p-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-lg font-medium"
-                >
-                  {item.label}
-                </Link>
-              ))}
-
-              <div className="mt-4 flex items-center gap-4">
-                <LanguageSwitcher currentLocale={locale} />
-              </div>
-            </nav>
-          </SheetContent>
-        </Sheet>
+        <div className="flex h-9 w-9 items-center justify-center md:hidden">
+          <MobileNav
+            locale={locale}
+            items={navItems}
+            openLabel={dict.navbar.openMenu}
+            closeLabel={dict.navbar.closeMenu}
+          />
+        </div>
       </div>
     </header>
   );

@@ -6,13 +6,15 @@ import { metadataBase, sharedOpenGraphImages, siteUrl } from "@/lib/seo";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
+  adjustFontFallback: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -47,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="dark scroll-smooth overflow-x-hidden">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen overflow-x-hidden bg-background text-foreground antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col overflow-x-hidden bg-background text-foreground antialiased`}
       >
         {children}
       </body>
