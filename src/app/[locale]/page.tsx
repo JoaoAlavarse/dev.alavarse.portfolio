@@ -70,15 +70,16 @@ export default async function Home({
           </div>
         </div>
 
-        <div className="relative mx-auto flex w-full max-w-[18rem] justify-center sm:max-w-90 lg:justify-self-end">
+        <div className="relative mx-auto flex w-full max-w-[288px] justify-center sm:max-w-[360px] lg:justify-self-end">
           <div className="absolute -inset-4 rounded-full bg-linear-to-tr from-purple-500/30 via-blue-500/20 to-pink-500/30 blur-3xl" />
           <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-white/10 bg-background/60 p-2 shadow-xl backdrop-blur-lg">
             <Image
               src="/joao-alavarse.jpeg"
               alt="Foto profissional de João Paulo Almeida Alavarse"
-              width={640}
-              height={640}
+              width={360}
+              height={360}
               sizes="(max-width: 640px) 288px, 360px"
+              quality={70}
               className="h-full w-full rounded-xl object-cover"
               priority
               fetchPriority="high"

@@ -919,8 +919,10 @@ export default async function AboutPage({
                 src="/joao-alavarse.jpeg"
                 alt="Foto profissional de João Paulo Almeida Alavarse"
                 width={360}
-                height={450}
-                className="w-full rounded-xl object-cover"
+                height={360}
+                sizes="(max-width: 768px) 288px, 360px"
+                quality={70}
+                className="aspect-square w-full rounded-xl object-cover"
                 priority
               />
             </div>
@@ -977,7 +979,7 @@ export default async function AboutPage({
       "@type": "ImageObject",
       url: `${siteUrl}/joao-alavarse.jpeg`,
       width: 360,
-      height: 450,
+      height: 360,
     },
     jobTitle: content.hero.subtitle,
     description: content.seo.description,
@@ -1110,8 +1112,10 @@ export default async function AboutPage({
               src="/joao-alavarse.jpeg"
               alt={content.hero.imageAlt}
               width={360}
-              height={450}
-              className="w-full rounded-xl object-cover"
+              height={360}
+              sizes="(max-width: 768px) 288px, 360px"
+              quality={70}
+              className="aspect-square w-full rounded-xl object-cover"
               priority
             />
           </div>

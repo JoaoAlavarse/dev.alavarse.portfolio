@@ -22,7 +22,6 @@ export function Navbar({ locale }: { locale: Locale }) {
           href={`/${locale}`}
           className="flex h-10 shrink-0 items-center gap-3"
         >
-          {/* logo.svg is 357×243 — reserve exact aspect to avoid CLS */}
           <span
             className="relative block shrink-0 overflow-hidden"
             style={{ width: 53, height: 36 }}
@@ -38,7 +37,6 @@ export function Navbar({ locale }: { locale: Locale }) {
               priority
             />
           </span>
-          {/* name-logo.svg is 626×136 */}
           <span
             className="relative hidden shrink-0 overflow-hidden sm:block"
             style={{ width: 128, height: 28 }}

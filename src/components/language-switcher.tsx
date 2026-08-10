@@ -1,7 +1,3 @@
-"use client";
-
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import type { Locale } from "@/interfaces";
 
 const locales: { label: string; code: Locale }[] = [
@@ -11,20 +7,17 @@ const locales: { label: string; code: Locale }[] = [
 ];
 
 export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
-  const pathname = usePathname();
-  const suffix = pathname.replace(/^\/(pt|en|es)/, "") || "";
-
   return (
     <div className="flex min-h-8 gap-2">
       {locales.map((locale) => {
         const isActive = locale.code === currentLocale;
 
         return (
-          <Link
+          <a
             key={locale.code}
-            href={`/${locale.code}${suffix}`}
+            href={`/${locale.code}`}
             hrefLang={locale.code}
-            prefetch={false}
+            data-locale-switch={locale.code}
             aria-current={isActive ? "page" : undefined}
             aria-label={`Alterar idioma para ${locale.label}`}
             className={`rounded px-2 py-1 ${
@@ -34,9 +27,20 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
             }`}
           >
             {locale.label}
-          </Link>
+          </a>
         );
       })}
     </div>
+  );
+}
+
+/** Tiny progressive enhancement: keep current path when switching locale. */
+export function LanguageSwitcherScript() {
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `document.querySelectorAll("[data-locale-switch]").forEach(function(el){el.addEventListener("click",function(e){e.preventDefault();var l=el.getAttribute("data-locale-switch");if(!l)return;location.assign(location.pathname.replace(/^\\/(pt|en|es)/,"/"+l)+location.search+location.hash);});});`,
+      }}
+    />
   );
 }

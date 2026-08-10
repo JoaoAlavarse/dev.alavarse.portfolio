@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { Footer } from "@/components/footer";
+import { LanguageSwitcherScript } from "@/components/language-switcher";
 import { Navbar } from "@/components/navbar";
 import type { Locale } from "@/interfaces";
 import { getDictionary } from "@/lib/get-dictionary";
@@ -14,7 +16,7 @@ import {
 } from "@/lib/seo";
 
 type LayoutProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   params: Promise<{ locale: string }>;
 };
 
@@ -95,7 +97,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       "@type": "ImageObject",
       url: `${siteUrl}/joao-alavarse.jpeg`,
       width: 360,
-      height: 450,
+      height: 360,
     },
     jobTitle: "Software Engineer",
     description: homeSeo[currentLocale].description,
@@ -159,6 +161,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         }}
       />
       <Analytics />
+      <LanguageSwitcherScript />
       <Navbar locale={currentLocale} />
       <div id="main-content" className="flex-1">
         {children}
